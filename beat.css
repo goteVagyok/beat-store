@@ -8,6 +8,40 @@ body{
     line-height: 1.5;
     font-family: 'Poppins', sans-serif;
 }
+
+.header_logo{
+    font-size: 300%;
+    font-weight: 600;
+    color: red;
+    background-color: black;
+    text-align: center;
+}
+hr{
+    color: gray;
+}
+.menus{
+    padding: 20px 20px;
+    margin: 0 110px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+.menus:hover{
+    color: red;
+}
+
+li{
+    list-style: none;
+}
+.header_menu{
+    display: flex;  /*a hatteret kiviszi a kepernyo szelere*/
+    background-color: black;
+    color: white;
+    padding: 20px 60px;
+}
+
+
+
 .footer{ 
     background-color: grey;
     padding: 70px 10px;
@@ -22,7 +56,7 @@ ul{
     list-style: none;
 }
 
-.row{
+.footer_row{
     display: flex;
     flex-wrap: wrap;
 }
