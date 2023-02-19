@@ -9,73 +9,134 @@
     <meta name="keywords" content="HTML,CSS,webterv">
     <title>BEAT STORE</title>
 
-    <link rel="stylesheet" href="beat.css">
+    <!--swiper_css-->
+    <link rel="stylesheet" href="style/swiper-bundle.min.css">
+    <!--css-->
+    <link rel="stylesheet" href="style/beat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
 </head>
 <body>
+    <!-----navbar----->
     <header class="header">
-        <div class="header_logo">
-            BEAT STORE
-        </div>
-        <hr>
-        <div class="header_container">
-                <div class="header_menu">
-                    <li><a href="#" class="menus">Tracks</a></li>
-                    <li><a href="#" class="menus">Licensing</a></li>
-                    <li><a href="#" class="menus">Sell your music</a></li>
-                    <li><a href="#" class="menus">Contact</a></li>
-                </div>
-        </div>
+        <nav>
+            <a href="beat.html" class="logo">BEAT STORE</a>
+            <ul class="header_menu">
+                <li><a href="#" class="menus">Tracks</a></li>
+                <li><a href="#" class="menus">Licensing</a></li>
+                <li><a href="#" class="menus">Sell your music</a></li>
+                <li><a href="#" class="menus">Contact</a></li>
+            </ul>
+            <div class="connection">
+                <a href="#">Sing in</a>
+                <a href="#">Register</a>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <section class="newTracks">
-            <h2>New tracks</h2>
-            <ul>
-                <li>
-                    <img src="beat1.jpg" alt="beat1">
-                    <p class="price">$24.5 | 123 BPM</p>
-                    <h3>Beat 1</h3>
-                </li>
-                <li>
-                    <img src="beat2.jpg" alt="beat2">
-                    <p class="price">$42 | 80 BPM</p>
-                    <h3>Beat 2</h3>
-                </li>
-                <li>
-                    <img src="beat3.jpg" alt="beat3">
-                    <p class="price">$17.4 | 113 BPM</p>
-                    <h3>Beat 3</h3>
-                </li>
-            </ul>
-        </section>
+    <main class="main_body">
+        <!------new_tracks------>
+        <h2>New tracks</h2>
+        <div class="new_tracks_container swiper">
+            <div class="slide_content">
+                <div class="new_tracks-row swiper-wrapper">
+                    <div class="new_tracks-col swiper-slide">
+                        <div class="beat_image">
+                            <img src="pic/beat1.png" alt="beat1">
+                        </div>
+                        <div class="beat_details">
+                            <p class="title">title</p>
+                            <h3>Beat 1</h3>
+                        </div>
+                    </div>
+                    <div class="new_tracks-col swiper-slide">
+                        <div class="beat_image">
+                            <img src="pic/beat1.png" alt="beat1">
+                        </div>
+                        <div class="beat_details">
+                            <p class="title">title</p>
+                            <h3>Beat 1</h3>
+                        </div>
+                    </div>
+                    <div class="new_tracks-col swiper-slide">
+                        <div class="beat_image">
+                            <img src="pic/beat1.png" alt="beat1">
+                        </div>
+                        <div class="beat_details">
+                            <p class="title">title</p>
+                            <h3>Beat 1</h3>
+                        </div>
+                    </div>
+                    <div class="new_tracks-col swiper-slide">
+                        <div class="beat_image">
+                            <img src="pic/beat1.png" alt="beat1">
+                        </div>
+                        <div class="beat_details">
+                            <p class="title">title</p>
+                            <h3>Beat 1</h3>
+                        </div>
+                    </div>
+                    <div class="new_tracks-col swiper-slide">
+                        <div class="beat_image">
+                            <img src="pic/beat1.png" alt="beat1">
+                        </div>
+                        <div class="beat_details">
+                            <p class="title">title</p>
+                            <h3>Beat 1</h3>
+                        </div>
+                    </div>
+                    <div class="new_tracks-col swiper-slide">
+                        <div class="beat_image">
+                            <img src="pic/beat1.png" alt="beat1">
+                        </div>
+                        <div class="beat_details">
+                            <p class="title">title</p>
+                            <h3>Beat 1</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <h2>Featured</h2>
+        <div class="featured_container">
+            <div class="featured-row">
+                <div class="featured-col">
+                    <ul>
+                        <li>
+                            <img src="pic/beat1.png" alt="beat4">
+                            <p class="title">title</p>
+                            <h3>Beat 1</h3>
+                        </li>
+                        <li>
+                            <img src="pic/beat1.png" alt="beat5">
+                            <p class="title">title</p>
+                            <h3>Beat 2</h3>
+                        </li>
+                        <li>
+                            <img src="pic/beat1.png" alt="beat6">
+                            <p class="title">title</p>
+                            <h3>Beat 3</h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <section>
-            <h2>Featured</h2>
-            <ul>
-                <li>
-                    <img src="beat4.jpg" alt="beat4">
-                    <p class="price">$24.5 | 123 BPM</p>
-                    <h3>Beat 1</h3>
-                </li>
-                <li>
-                    <img src="beat5.jpg" alt="beat5">
-                    <p class="price">$42 | 80 BPM</p>
-                    <h3>Beat 2</h3>
-                </li>
-                <li>
-                    <img src="beat6.jpg" alt="beat6">
-                    <p class="price">$17.4 | 113 BPM</p>
-                    <h3>Beat 3</h3>
-                </li>
-            </ul>
-        </section>
 
-        <section>
-            <h2>Mmebers</h2>
-
-        </section>
+        <div class="genres_container">
+            <div class="genres-row">
+                <li><a href="#"><img src="genre1" alt="genre1"></a></li>
+                <li><a href="#"><img src="genre2" alt="genre2"></a></li>
+                <li><a href="#"><img src="genre3" alt="genre3"></a></li>
+                <li><a href="#"><img src="genre4" alt="genre4"></a></li>
+                <li><a href="#"><img src="genre5" alt="genre5"></a></li>
+                
+            </div>
+        </div>
 
         <section>
             <h2>Genres</h2>
@@ -112,13 +173,14 @@
         </section>
     </main>
     
+    <!-----footer----->
     <footer class="footer">
-        <div class="container">
+        <div class="footer_container">
             <div class="footer_row">
                 <div class="footer-col">
                     <h4>Beat Store</h4>
                     <ul>
-                        <li><a href="#">About ut</a></li>
+                        <li><a href="#">About us</a></li>
                         <li><a href="#">Merch</a></li>
                         <li><a href="#">Blog</a></li>
                     </ul>
@@ -151,6 +213,9 @@
 
 
     </footer>
-
+    <!--swiper_script-->
+    <script src="script/swiper-bundle.min.js"></script>
+    <!--script-->
+    <script src="script/beat.js"></script>
 </body>
 </html>

@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+}
+/*---------------header-----------------*/ /*még nem reszponzív*/
+header{
+    background-color: black;
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*középre tolja a menüsort*/
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 20px;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav ul li a:hover{
+    color: red;
+    transition: all .30s ease; /*0.30mp alatt színezi be az összes elemet, amire rávisszük az egeret*/
+}
+/*-----logo-----*/
+.logo{
+    color: red;
+    font-size: 50px;
+    text-decoration: none;
+}
+.logo:hover{
+    transition: all 0.2s ease;
+    transform: scale(1.05);
+    /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+    animation: changeLogo 0.8s linear  infinite alternate forwards;   
+}
+@keyframes changeLogo{
+    0%{color: white;}
+}
+/*-----connection-----*/
+.connection{
+    display: flex;
+    align-items: center;
+}
+.connection a{
+    margin-left: 20px;
+    margin-right: 20px;
+    border: none;
+    color: red;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .2s;
+}
+.connection a:hover{
+    transform: scale(1.06);
+    cursor: pointer;
+    color: white;
+}
+
+
+/*----------------main_body----------------*/
+.main_body{
+    background-color: #2b2a2a;
+    overflow: hidden;
+    padding-top: 100px;
+}
+h2{
+    color: white;
+    font-weight: bold;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    padding-left: 50px;
+}
+/*----new_tracks----*/
+.new_tracks_container{
+    max-width: 1500px;
+    width: 80%;     /*az egész csúszkás rész nagysága*/
+    padding: 30px 0;
+}
+/*
+.new_tracks-row{
+    display: flex;
+    flex-wrap: nowrap;     /*egy sorban maradnak az elemek*/
+/*}*/
+
+.new_tracks-col{
+    /*background-color: #bbbbbb;*/
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    /*border: 4px solid red;*/
+    flex-basis: 270px;  /*a dobozok mérete*/
+}
+.slide_content{
+    margin: 0 30px;
+    overflow: hidden;
+}
+.beat_image{
+    position: relative;
+}
+.beat_image img{
+    object-fit: cover;
+    width: 90%;     /*képek nagysága*/
+}
+
+.beat_details,
+.beat_image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+.beat_details h3{
+    font-weight: bold;
+    color: white;
+}
+.beat_details p{
+    color: #656464;
+    font-style: italic;
+}
+/*-----swipers-----*/
+.swiper-navBtn{
+    color: rgba(255, 0, 0, 0.307);
+    transition: all 0.2s ease;
+}
+.swiper-navBtn:hover{
+    color: red;
+    transform: scale(1.1);
+}
+.swiper-navBtn::before,
+.swiper-navBtn::after{
+  font-size: 35px;
+}
+.swiper-button-next{
+  right: 0;
+}
+.swiper-button-prev{
+  left: 0;
+}
+.swiper-pagination-bullet{
+  background-color: rgba(255, 0, 0, 0.307);
+  opacity: 1;   /*homályosság*/
+}
+.swiper-pagination-bullet-active{
+  background-color: red;
+}
+/*-----mobile_view-----*/
+@media screen and (max-width: 768px) {
+    .slide-content{
+      margin: 0 10px;
+    }
+    .swiper-navBtn{
+      display: none;
+    }
+  }
+/*-*/
+/*----featured----*/
+
+
+/*----------------footer----------------*/
+.footer{ 
+    background-color: #656464;
+    padding: 70px 10px;
+}
+
+.footer_container{
+    max-width: 1170px;
+    margin: auto;
+}
+
+ul{
+    list-style: none;
+}
+
+.footer_row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-col{
+    width: 25%;
+    padding: 0 15px;
+    position: relative;
+}
+.footer-col h4{
+    font-size: 18px;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+}
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 7;
+    top: 27px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+}
+.footer-col ul li a:hover{
+    color: white;
+    padding-left: 10px;
+}
