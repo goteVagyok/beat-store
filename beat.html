@@ -7,6 +7,7 @@
     <meta name="authors" content="Földes Gergely, Czellár Botond">
     <meta name="description" content="licenciába adás">
     <meta name="keywords" content="HTML,CSS,webterv">
+    <link rel="icon" href="assets/img/icon.jpg">
     <title>BEAT STORE</title>
 
     <!--swiper_css-->
@@ -17,7 +18,7 @@
 
 </head>
 <body>
-    <!-----navbar----->
+    <!-----navbar&logo----->
     <header class="header">
         <nav>
             <a href="beat.html" class="logo">BEAT STORE</a>
@@ -42,56 +43,65 @@
                 <div class="new_tracks-row swiper-wrapper">
                     <div class="new_tracks-col swiper-slide">
                         <div class="beat_image">
-                            <img src="pic/beat1.png" alt="beat1">
+                            <audio id="audio_play1">
+                                <source src="assets/audio/andromeda.mp3">
+                            </audio>
+                            <img class="audio-img" src="assets/img/beat1.jpg" alt="beat1" onclick="document.getElementById('audio_play1').play(); return false;"/>
                         </div>
                         <div class="beat_details">
-                            <p class="title">title</p>
-                            <h3>Beat 1</h3>
+                            <p class="title">$24.5 | 123 BPM</p>
+                            <h3>ANDROMEDA</h3>
                         </div>
                     </div>
                     <div class="new_tracks-col swiper-slide">
                         <div class="beat_image">
-                            <img src="pic/beat1.png" alt="beat1">
+                            <audio id="audio_play2">
+                                <source src="assets/audio/sidekick.mp3">
+                            </audio>
+                            <img class="audio-img" src="assets/img/beat2.jpg" alt="beat2" onclick="document.getElementById('audio_play2').play(); return false;"/>
                         </div>
                         <div class="beat_details">
-                            <p class="title">title</p>
-                            <h3>Beat 1</h3>
+                            <p class="title">$42 | 80 BPM</p>
+                            <h3>sidekick</h3>
                         </div>
                     </div>
                     <div class="new_tracks-col swiper-slide">
                         <div class="beat_image">
-                            <img src="pic/beat1.png" alt="beat1">
+                            <audio id="audio_play3">
+                                <source src="assets/audio/triumph.mp3">
+                            </audio>
+                            <img class="audio-img" src="assets/img/beat3.jpg" alt="beat3" onclick="document.getElementById('audio_play3').play(); return false;"/>
                         </div>
                         <div class="beat_details">
-                            <p class="title">title</p>
-                            <h3>Beat 1</h3>
+                            <p class="title">$17.4 | 113 BPM</p>
+                            <h3>Triumph</h3>
                         </div>
                     </div>
                     <div class="new_tracks-col swiper-slide">
                         <div class="beat_image">
-                            <img src="pic/beat1.png" alt="beat1">
+                            <img class="audio-img" src="pic/beat1.png" alt="beat1">
                         </div>
                         <div class="beat_details">
                             <p class="title">title</p>
-                            <h3>Beat 1</h3>
+                            <h3>Beat 4</h3>
                         </div>
                     </div>
                     <div class="new_tracks-col swiper-slide">
                         <div class="beat_image">
-                            <img src="pic/beat1.png" alt="beat1">
+                            <img class="audio-img" src="pic/beat1.png" alt="beat1">
                         </div>
                         <div class="beat_details">
                             <p class="title">title</p>
-                            <h3>Beat 1</h3>
+                            <h3>Beat 5</h3>
                         </div>
                     </div>
                     <div class="new_tracks-col swiper-slide">
                         <div class="beat_image">
-                            <img src="pic/beat1.png" alt="beat1">
+                            <img class="audio-img" src="pic/beat1.png" alt="beat1">
                         </div>
                         <div class="beat_details">
                             <p class="title">title</p>
-                            <h3>Beat 1</h3>
+                            <h3>Beat 6</h3>
                         </div>
                     </div>
                 </div>
@@ -102,29 +112,35 @@
         </div>
         
         <h2>Featured</h2>
-        <div class="featured_container">
-            <div class="featured-row">
-                <div class="featured-col">
-                    <ul>
-                        <li>
-                            <img src="pic/beat1.png" alt="beat4">
-                            <p class="title">title</p>
-                            <h3>Beat 1</h3>
-                        </li>
-                        <li>
-                            <img src="pic/beat1.png" alt="beat5">
-                            <p class="title">title</p>
-                            <h3>Beat 2</h3>
-                        </li>
-                        <li>
-                            <img src="pic/beat1.png" alt="beat6">
-                            <p class="title">title</p>
-                            <h3>Beat 3</h3>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <ul>
+            <li>
+                <audio id="audio_play4">
+                    <source src="assets/audio/parallel.mp3">
+                </audio>
+                <img class="audio-img" src="assets/img/beat4.jpg" alt="beat4" onclick="document.getElementById('audio_play4').play(); return false;"/>
+                <h3>parallel</h3>
+                <p class="price">$24.5 | 123 BPM</p>
+                <br/>
+            </li>
+            <li>
+                <audio id="audio_play5">
+                    <source src="assets/audio/feverdream.mp3">
+                </audio>
+                <img class="audio-img" src="assets/img/beat5.jpg" alt="beat5" onclick="document.getElementById('audio_play5').play(); return false;"/>
+                <h3>feverdream</h3>
+                <p class="price">$42 | 80 BPM</p>
+                <br/>
+            </li>
+            <li>
+                <audio id="audio_play6">
+                    <source src="assets/audio/brainfog.mp3">
+                </audio>
+                <img class="audio-img" src="assets/img/beat6.jpg" alt="beat6" onclick="document.getElementById('audio_play6').play(); return false;"/>
+                <h3>Brainfog</h3>
+                <p class="price">$17.4 | 113 BPM</p>
+                <br/>
+            </li>
+        </ul>
 
 
         <div class="genres_container">
@@ -137,6 +153,11 @@
                 
             </div>
         </div>
+
+        <section>
+            <h2>Members</h2>
+
+        </section>
 
         <section>
             <h2>Genres</h2>

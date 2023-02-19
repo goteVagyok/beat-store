@@ -1,7 +1,7 @@
 var swiper = new Swiper(".slide_content", {
-    slidesPerView: 4,    //egy slide-on hány elem legyen
-    spaceBetween: 10,    //elemek közti hely
-    slidesPerGroup: 1,   //hány elem legyen csoportosítva == lapozásnál hány elemet ugorjon
+    slidesPerView: 3,    //egy slide-on hány elem legyen
+    spaceBetween: 7,    //elemek közti hely
+    //slidesPerGroup: 1,   //hány elem legyen csoportosítva == lapozásnál hány elemet ugorjon
     loop: true,
     centerSlide: 'true',    //középen legyen a slide (jelen esetben a pöttyök)
     fade: 'true',
