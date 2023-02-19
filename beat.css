@@ -11,6 +11,70 @@ body{
     background-color: black;
     color: white;
 }
+
+ul{
+    list-style: none;
+}
+
+hr{
+    color: gray;
+}
+
+li{
+    list-style: none;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    margin-left: 20px;
+}
+
+h3 {
+    margin-left: 20px;
+}
+
+h2 {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+p{
+    margin-left: 20px;
+}
+
+.header_logo{
+    font-size: 300%;
+    font-weight: 600;
+    color: red;
+    background-color: black;
+    text-align: center;
+}
+
+.menus{
+    padding: 20px 20px;
+    margin: 0 110px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.menus:hover{
+    color: black;
+}
+
+.header_menu{
+    display: flex;  /*a hatteret kiviszi a kepernyo szelere*/
+    background-color: red;
+    color: black;
+    padding: 20px 10px;
+}
+
+.audio-img {
+    cursor: pointer; /*ha hovereled a kepet akkor pointer lesz a kurzor_*/
+}
+
 .footer{ 
     background-color: grey;
     padding: 70px 10px;
@@ -23,31 +87,12 @@ body{
     font-size: 40px;
 }
 
-.nav_formatting {
-    background-color: #e91e63;
-    font-size: 30px;
-    display: flex;
-    text-align: center;
-    line-height: 60px;
-}
-
-.nav_container {
-
-    color: black;
-    text-align: center;
-    font-size: 20px;
-}
-
 .container{
     max-width: 1170px;
     margin: auto;
 }
 
-ul{
-    list-style: none;
-}
-
-.row{
+.footer_row{
     display: flex;
     flex-wrap: wrap;
 }
@@ -57,12 +102,14 @@ ul{
     padding: 0 15px;
     position: relative;
 }
+
 .footer-col h4{
     font-size: 18px;
     color: white;
     text-transform: capitalize;
     margin-bottom: 35px;
 }
+
 .footer-col h4::before{
     content: '';
     position: absolute;
@@ -73,18 +120,21 @@ ul{
     box-sizing: border-box;
     width: 50px;
 }
+
 .footer-col ul li:not(:last-child){
     margin-bottom: 10px;
 }
+
 .footer-col ul li a{
     font-size: 16px;
     text-transform: capitalize;
-    color: white;
+
     text-decoration: none;
     font-weight: 300;
     color: #bbbbbb;
     display: block;
 }
+
 .footer-col ul li a:hover{
     color: white;
     padding-left: 10px;
