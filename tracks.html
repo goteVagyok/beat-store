@@ -10,10 +10,8 @@
     <link rel="icon" href="assets/img/icon.jpg">
     <title>BEAT STORE</title>
 
-    <!--swiper_css-->
-    <link rel="stylesheet" href="style/swiper-bundle.min.css">
     <!--css-->
-    <link rel="stylesheet" href="style/beat.css">
+    <link rel="stylesheet" href="style/tracks.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
 </head>
@@ -28,7 +26,7 @@
         <a href="beat.html" class="logo">BEAT STORE</a>
         <nav>
             <ul class="header_menu">
-                <li><a href="tracks.html" class="menus">Tracks</a></li>
+                <li><a href="#" class="menus">Tracks</a></li>
                 <li><a href="#" class="menus">Licensing</a></li>
                 <li><a href="#" class="menus">Sell your music</a></li>
                 <li><a href="#" class="menus">Contact</a></li>
@@ -41,80 +39,125 @@
     </header>
 
     <main class="main_body">
+
         <!------new_tracks------>
-        <h2>New tracks</h2>
-        <div class="new_tracks_container swiper">
-            <div class="slide_content">
-                <div class="new_tracks-row swiper-wrapper">
-                    <div class="new_tracks-col swiper-slide">
-                        <div class="beat_image">
-                            <audio id="audio_play1">
-                                <source src="assets/audio/andromeda.mp3">
-                            </audio>
-                            <img class="audio-img" src="assets/img/beat1.jpg" alt="beat1" onclick="document.getElementById('audio_play1').play(); return false;"/>
-                        </div>
-                        <div class="beat_details">
-                            <p class="title">$24.5 | 123 BPM</p>
-                            <h3>ANDROMEDA</h3>
-                        </div>
-                    </div>
-                    <div class="new_tracks-col swiper-slide">
-                        <div class="beat_image">
-                            <audio id="audio_play2">
-                                <source src="assets/audio/sidekick.mp3">
-                            </audio>
-                            <img class="audio-img" src="assets/img/beat2.jpg" alt="beat2" onclick="document.getElementById('audio_play2').play(); return false;"/>
-                        </div>
-                        <div class="beat_details">
-                            <p class="title">$42 | 80 BPM</p>
-                            <h3>sidekick</h3>
-                        </div>
-                    </div>
-                    <div class="new_tracks-col swiper-slide">
-                        <div class="beat_image">
-                            <audio id="audio_play3">
-                                <source src="assets/audio/triumph.mp3">
-                            </audio>
-                            <img class="audio-img" src="assets/img/beat3.jpg" alt="beat3" onclick="document.getElementById('audio_play3').play(); return false;"/>
-                        </div>
-                        <div class="beat_details">
-                            <p class="title">$17.4 | 113 BPM</p>
-                            <h3>Triumph</h3>
-                        </div>
-                    </div>
-                    <div class="new_tracks-col swiper-slide">
-                        <div class="beat_image">
-                            <img class="audio-img" src="pic/beat1.png" alt="beat1">
-                        </div>
-                        <div class="beat_details">
-                            <p class="title">title</p>
-                            <h3>Beat 4</h3>
-                        </div>
-                    </div>
-                    <div class="new_tracks-col swiper-slide">
-                        <div class="beat_image">
-                            <img class="audio-img" src="pic/beat1.png" alt="beat1">
-                        </div>
-                        <div class="beat_details">
-                            <p class="title">title</p>
-                            <h3>Beat 5</h3>
-                        </div>
-                    </div>
-                    <div class="new_tracks-col swiper-slide">
-                        <div class="beat_image">
-                            <img class="audio-img" src="pic/beat1.png" alt="beat1">
-                        </div>
-                        <div class="beat_details">
-                            <p class="title">title</p>
-                            <h3>Beat 6</h3>
-                        </div>
-                    </div>
+        <div class="new_tracks">
+            <div class="slider_head">
+                <h2>New tracks</h2>
+                <div class="slider-btn">
+                    <img id="left_scroll" src="pic/arrow_left.png" alt="left_arrow">
+                    <img id="right_scroll" src="pic/arrow_right.png" alt="right_arrow">
                 </div>
             </div>
-            <div class="swiper-button-next swiper-navBtn"></div>
-            <div class="swiper-button-prev swiper-navBtn"></div>
-            <div class="swiper-pagination"></div>
-        </div>
+            <div class="slider_content">
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat1.jpg" alt="beat1" onclick="document.getElementById('audio_play1').play(); return false;"/>
+                        <audio id="audio_play1">
+                            <source src="assets/audio/andromeda.mp3">
+                        </audio>
+                    </div>
+                    <h3>ANDROMEDA</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat2.jpg" alt="beat2">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/sidekick.mp3">
+                        </audio>
+                    </div>
+                    <h3>sidekick</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat1.jpg" alt="beat1">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/andromeda.mp3">
+                        </audio>
+                    </div>
+                    <h3>ANDROMEDA</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat2.jpg" alt="beat2">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/sidekick.mp3">
+                        </audio>
+                    </div>
+                    <h3>sidekick</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat1.jpg" alt="beat1">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/andromeda.mp3">
+                        </audio>
+                    </div>
+                    <h3>ANDROMEDA</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat2.jpg" alt="beat2">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/sidekick.mp3">
+                        </audio>
+                    </div>
+                    <h3>sidekick</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat1.jpg" alt="beat1">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/andromeda.mp3">
+                        </audio>
+                    </div>
+                    <h3>ANDROMEDA</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat2.jpg" alt="beat2">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/sidekick.mp3">
+                        </audio>
+                    </div>
+                    <h3>sidekick</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat1.jpg" alt="beat1">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/andromeda.mp3">
+                        </audio>
+                    </div>
+                    <h3>ANDROMEDA</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img src="assets/img/beat2.jpg" alt="beat2">
+                        <audio id="audio_play1">
+                            <source src="assets/audio/sidekick.mp3">
+                        </audio>
+                    </div>
+                    <h3>sidekick</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+            </div>
+        </div> 
+
+
+
+
+
+
         
         <h2>Featured</h2>
         <ul>
@@ -239,9 +282,7 @@
 
 
     </footer>
-    <!--swiper_script-->
-    <script src="script/swiper-bundle.min.js"></script>
     <!--script-->
-    <script src="script/beat.js"></script>
+    <script src="script/tracks.js"></script>
 </body>
 </html>
