@@ -1,69 +1,74 @@
 (sry az ekezetek elhagyasaert)
 ahol max-ot irtam, ott maximum annyira jar pont, hiaba van tobbszor alkalmazva
 
+[✔] - kesz
+[-] - nagyjabol kesz/belekezdve
+[ ] - nincs kesz
+
 24pont
-egyseges dizajn
-logikus kiepites
-esztetika
-jol olvashatosag
-intuitiv urlapok
-ikon a fulon
-igenyesseg, modernitas
+[✔] egyseges dizajn
+[✔]  logikus kiepites
+[]  esztetika
+[✔] jol olvashatosag
+[✔] intuitiv urlapok
+[✔] ikon a fulon
+[]  igenyesseg, modernitas
 
 8pont
-jol mukodo navbar
-:active navbar, ami mutatja melyik oldalon vagyunk
-menupontok kinezete valtozik
-fixed fejlec
+[✔] jol mukodo navbar
+[?]  :active navbar, ami mutatja melyik oldalon vagyunk
+[✔]  menupontok kinezete valtozik
+[✔] fixed fejlec
 
 14pont
-igenyes animalas
-+egyeb igenyes animaciok
-gombok/kartyak :hover-rel
+[✔] igenyes animalas
+[]  +egyeb igenyes animaciok
+[]  gombok/kartyak :hover-rel
 
 10pont
-reszponzivitas
+[]  reszponzivitas
 
 10pont
-legalabb 1 urlap 4 input mezovel
-min 6 kul. tipusu input mezo (fasznak ennyi?)
-submit gomb -> elkuld
-reset gomb -> alapallapotba
-urlap, ami tartalmaz mezocsoportositast(ezt nem ertem)
+[✔] legalabb 1 urlap 4 input mezovel
+[✔] min 6 kul. tipusu input mezo (fasznak ennyi?)
+[✔] submit gomb -> elkuld
+[✔] reset gomb -> alapallapotba
+[✔] urlap, ami tartalmaz mezocsoportositast(ezt nem ertem)
+    vannak optiongroupok lenyitos listabol valasztos inoutnal
 
 3pont
-megfelelo html felepites: header, footer, nav, main, aside section, article	(ezt nem kell ilyesn sorrendben, csak hasznaljuk oket)
+[-] megfelelo html felepites: header, footer, nav, main, aside section, article	(ezt nem kell ilyesn sorrendben, csak hasznaljuk oket)
 
 4pont
-legalabb 1 tablazat
-van olyan tablazat fejleccel, ami maskepp jelenik meg
-tablazat headers hasznalataval
+[]  legalabb 1 tablazat
+[]  van olyan tablazat fejleccel, ami maskepp jelenik meg
+[]  tablazat headers hasznalataval
 
 16pont
-min 1 css file hasznalata
-elem,id,class hasznalata (elem, #elem, .elem)
-attributum alapjan valo kijeloles
-kapcsolat alapjan valo kijeloles
-z-index
-float, clear hasznalata
-min 2 before/after/selection...
-min 1 nyomtatasi stiluslapu html oldal
-minden oldalhoz van nyomtatasi stiluslap
+[✔] min 1 css file hasznalata
+[✔] elem,id,class hasznalata (elem, #elem, .elem)
+[✔] attributum alapjan valo kijeloles
+[]  kapcsolat alapjan valo kijeloles
+[✔] z-index
+[✔] float, clear hasznalata
+[]  min 2 before/after/selection...
+[]  min 1 nyomtatasi stiluslapu html oldal
+[]  minden oldalhoz van nyomtatasi stiluslap
 
 2pont
-audio/video hasznalata
+[-] audio/video hasznalata
 
 8pont
-max 4 p,strong,q,hr,sub ...
-listak
-flexbox vagy grid hasznalata
+[]  max 4 p,strong,q,hr,sub ...
+[✔] listak
+[]  flexbox vagy grid hasznalata
 
 
 10pont
-border
-border-radius
-background-color
-text-align/text-decoration
-max 3 pozicionalas: absolute, relative, sticky ...
-arnyekok
-max 2 transform
+[✔] border
+[✔] border-radius
+[✔] background-color
+[✔] text-align/text-decoration
+[]  max 3 pozicionalas: absolute, relative, sticky ...
+[]  arnyekok
+[]  max 2 transform

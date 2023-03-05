@@ -1,30 +1,34 @@
-var swiper = new Swiper(".slide_content", {
-    slidesPerView: 3,    //egy slide-on hány elem legyen
-    spaceBetween: 7,    //elemek közti hely
-    //slidesPerGroup: 1,   //hány elem legyen csoportosítva == lapozásnál hány elemet ugorjon
-    loop: true,
-    centerSlide: 'true',    //középen legyen a slide (jelen esetben a pöttyök)
-    fade: 'true',
-    grabCursor: 'true',  //'megfogva' is lehet lapozni
-    pagination: {        //pöttyök alul (lapszámozás)
-        el: ".swiper-pagination",   //el=element, ez rakja be a kis pöttyöket alulra
-        clickable: true,    //kattinthatóak legyenek a pöttyök
-        dynamicBullets: true,    //az alsó pontok lapozása lesz dinamikus
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",   //lapozás előre
-        prevEl: ".swiper-button-prev",   //lapozás hátra
-    },
 
-    breakpoints:{       //a weboldal méret csökkenésekkor kevesebb elem látható egyszerre
-        0: {
-            slidesPerView: 1,
-        },
-        520: {
-            slidesPerView: 2,
-        },
-        950: {
-            slidesPerView: 3,
-        },
-    },
-});
+//----------------------Scrollbars------------------------//
+let leftScroll = document.getElementById('left_scroll');
+let rightScroll = document.getElementById('right_scroll');
+let sliderContent = document.getElementsByClassName('slider_content')[0];
+
+leftScroll.addEventListener('click', ()=>{
+    sliderContent.scrollLeft -= 600;
+})
+rightScroll.addEventListener('click', ()=>{
+    sliderContent.scrollLeft += 600;
+})
+
+let leftScroll2 = document.getElementById('left_scroll2');
+let rightScroll2 = document.getElementById('right_scroll2');
+let sliderContent2 = document.getElementsByClassName('slider_content2')[0];
+
+leftScroll2.addEventListener('click', ()=>{
+    sliderContent2.scrollLeft -= 600;
+})
+rightScroll2.addEventListener('click', ()=>{
+    sliderContent2.scrollLeft += 600;
+})
+
+let leftScroll3 = document.getElementById('left_scroll3');
+let rightScroll3 = document.getElementById('right_scroll3');
+let sliderContent3 = document.getElementsByClassName('slider_content3')[0];
+
+leftScroll3.addEventListener('click', ()=>{
+    sliderContent3.scrollLeft -= 600;
+})
+rightScroll3.addEventListener('click', ()=>{
+    sliderContent3.scrollLeft += 600;
+})

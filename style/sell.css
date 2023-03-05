@@ -1,0 +1,57 @@
+label {
+    font-size: 30px;
+    color: white;
+}
+
+input{
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+input[type=file] {
+    font-size: 30px;
+    padding: 5px;
+    width: 65%;
+    display: inline-block;
+}
+
+.button {
+    display: inline-block;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    border-color: white;
+}
+
+input:hover {
+    border-color: white;
+    border-width: 3px;
+}
+
+body {
+    text-align: center;
+    background-color: #2b2a2a;
+}
+
+form {
+    display: inline-block;
+    border-style: ridge;
+    border-color: red;
+    border-radius: 30px;
+    margin-bottom: 100px;
+    margin-top: 180px;
+    background-color: black;
+    box-shadow: red;
+}
+
+footer {
+    text-align: left;
+}
+
+select {
+    font-size: 30px;
+}

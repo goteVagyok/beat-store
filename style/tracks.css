@@ -188,27 +188,28 @@ h2{
     font-weight: bold;
     padding-top: 100px;
     padding-bottom: 40px;
-    padding-left: 50px;
+    padding-left: 10px;
 }
-/*----new_tracks----*/
+/*----new_tracks&featured----*/
+/*
 .new_tracks_container{
     max-width: 1500px;
-    width: 80%;     /*az egész csúszkás rész nagysága*/
+    width: 80%;     /*az egész csúszkás rész nagysága
     padding: 30px 0;
 }
 /*
 .new_tracks-row{
     display: flex;
-    flex-wrap: nowrap;     /*egy sorban maradnak az elemek*/
-/*}*/
+    flex-wrap: nowrap;     /*egy sorban maradnak az elemek
+}
 
 .new_tracks-col{
-    /*background-color: #bbbbbb;*/
+    /*background-color: #bbbbbb;
     display: flex;
     flex-direction: column;
     padding: 10px 0px;
-    /*border: 4px solid red;*/
-    flex-basis: 270px;  /*a dobozok mérete*/
+    /*border: 4px solid red;
+    flex-basis: 270px;  /*a dobozok mérete
 }
 .slide_content{
     margin: 0 30px;
@@ -237,21 +238,31 @@ h2{
     color: #656464;
     font-style: italic;
 }
+*/
 
-/*-----new_tracks-----*/
+/*-----new_tracks&featured-----*/
 /*-----sliders-----*/
 #left_scroll,
-#right_scroll{
+#right_scroll,
+#left_scroll2,
+#right_scroll2,
+#left_scroll3,
+#right_scroll3{
     width: 60px;
     cursor: pointer;
     transition: all .4 linear;
 }
 #left_scroll:hover,
-#right_scroll:hover{
+#right_scroll:hover,
+#left_scroll2:hover,
+#right_scroll2:hover,
+#left_scroll3:hover,
+#right_scroll3:hover{
     transform: scale(0.85);
 }
 /*----------*/
-.new_tracks{
+.new_tracks,
+.featured{
     margin: auto;
     width: 90%;
     height: auto;
@@ -270,7 +281,8 @@ h3{
     align-items: center;
     justify-content: space-between;
 }
-.slider_content{
+.slider_content,
+.slider_content2{
     width: 100%;
     margin-top: 15px;
     display: flex;
@@ -280,15 +292,22 @@ h3{
 .slider_content::-webkit-scrollbar{
     display: none;
 }
+.slider_content2::-webkit-scrollbar{
+    display: none;
+}
+.slider_content3::-webkit-scrollbar{
+    display: none;
+}
 .music_card{
-    width: 200px;
-    height: 300px;
+    width: 700px;
+    height: 270px;
     list-style-type: none;
-    margin-right: 10px;
+    margin-right: 20px;
     transition: .3s linear;
 }
 .music_card:hover{
-    background: rgb(101,100,100);
+    background: rgb(61, 61, 61);
+
 }
 .img_player{
     position: relative;
@@ -296,18 +315,32 @@ h3{
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .img_player img{
     width: 100%;
     height: 180px;
 }
 
-
-
-
-
-/*----featured----*/
-
+/*.artist-img{
+    position: relative;
+    border-radius: 50%;
+    transition: .3s linear;
+}*/
+.slider_content3{
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+.artist_card{
+    width: 100%;
+    position: relative;
+    list-style-type: none;
+    margin-right: 20px;
+}
 
 /*----------------footer----------------*/
 .footer{ 
@@ -366,5 +399,8 @@ ul{
 }
 .footer-col ul li a:hover{
     color: white;
-    padding-left: 10px;
+    padding-left: 2px;
+}
+.social a:hover{
+    color: red !important;
 }
