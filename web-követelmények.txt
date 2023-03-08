@@ -40,9 +40,9 @@ ahol max-ot irtam, ott maximum annyira jar pont, hiaba van tobbszor alkalmazva
 [-] megfelelo html felepites: header, footer, nav, main, aside section, article	(ezt nem kell ilyesn sorrendben, csak hasznaljuk oket)
 
 4pont
-[]  legalabb 1 tablazat
-[]  van olyan tablazat fejleccel, ami maskepp jelenik meg
-[]  tablazat headers hasznalataval
+[✔]  legalabb 1 tablazat
+[✔]  van olyan tablazat fejleccel, ami maskepp jelenik meg
+[✔]  tablazat headers hasznalataval
 
 16pont
 [✔] min 1 css file hasznalata

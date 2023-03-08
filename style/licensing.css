@@ -1,0 +1,48 @@
+body{
+    background-color: #2b2a2a;
+}
+
+table{
+    border-radius: 10px;
+    border: 2px solid red;
+}
+
+th {
+    background-color: black;
+    color: red;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+td {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    width: 33%;
+    padding: 20px;
+}
+
+td:hover {
+    color: white;
+    transition: all .5s;
+}
+
+caption {
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.licensing-table {
+    padding: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+tr {
+    width: 200px;
+    text-align: center;
+}
