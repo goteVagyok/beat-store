@@ -27,7 +27,6 @@ nav{
 .header_menu{
     margin-right: 25px;
 }
-
 nav ul li{
     list-style: none;
     display: inline-block;
@@ -44,6 +43,9 @@ nav ul li a{
 nav ul li a:hover{
     color: red;
     transition: all .30s ease; /*0.30mp alatt színezi be az összes elemet, amire rávisszük az egeret*/
+}
+.active{
+    color: red !important;
 }
 /*-----hamburger_menu-----*/
 .menu_icon{

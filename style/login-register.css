@@ -31,7 +31,10 @@ nav{
 .header_menu{
     margin-right: 25px;
 }
-
+.header .active{
+    color: white;
+    transition: all .30s ease;
+}
 nav ul li{
     list-style: none;
     display: inline-block;
@@ -275,6 +278,9 @@ label #cancel{
     top: -7px;
 }
 /*--remember-forgot--*/
+.agreement{
+    padding-right: 80px;
+}
 .remember-forgot,
 .agreement{
     font-size: 0.9rem;

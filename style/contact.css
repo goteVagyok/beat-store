@@ -9,6 +9,7 @@ body{
     font-family: 'Poppins', sans-serif;
     background-size: cover;
     background-position: center;
+    background-color: #2b2a2a;
 }
 /*---------------header-----------------*/
 header{
@@ -32,7 +33,7 @@ nav{
     margin-right: 25px;
 }
 .header .active{
-    color: white;
+    color: red;
     transition: all .30s ease;
 }
 nav ul li{
@@ -197,9 +198,9 @@ label #cancel{
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 500px;
-    width: 800px;
-    background-color: transparent;
+    height: 550px;
+    width: 1000px;
+    background-color: rgb(178, 178, 178);
     border: 2px solid rgba(39, 39, 39, 0.5); 
     backdrop-filter: blur(5px);
     border-radius: 10px;
@@ -210,32 +211,11 @@ label #cancel{
 }
 .form-box{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 40px 60px;
-}
-/*---a két kártya cseréje---*/
-/*CSERE: LOG-REG PÁROS, ACTIVE CLASS ÉS A TRANSLATE-JÜK*/
-/*.log_reg-card.active{
-    height: 500px;
-}*/
-.log_reg-card .login{
-    position: absolute;
-    transform: translateX(-600px);
-}
-.log_reg-card.active .login{
-    transition: transform 0.3s ease;
-    transform: translateX(0);
-}
-.log_reg-card .registration{
-    transition: transform 0.3s ease;
-    transform: translateX(0);
-}
-.log_reg-card.active .registration{
-    transition: none;
-    transform: translateX(600px);
+    padding: 0 60px;
 }
 
 
@@ -279,27 +259,9 @@ label #cancel{
 .input-box input:valid~label{   /*a mezőbe('input') belekattintásnál és beleírásnál is a kövekező történik a 'label'-lel*/
     top: -7px;
 }
-/*--remember-forgot--*/
-.agreement{
-    padding-right: 80px;
-}
-.remember-forgot,
-.agreement{
-    font-size: 0.9rem;
-    color: white;
-    font-weight: 400;
-    margin: 30px 0 10px 0;
-    display: flex;
-    justify-content: space-between;
-}
-.remember-forgot label input,
-.agreement label input{
-    accent-color: black;    /*checkbox színe*/
-    margin-right: 5px;
-}
-.remember-forgot a{
-    color: black;
-    font-weight: 500;
+.table-header{
+    font-size: 30px;
+    border-bottom: 2px solid black;
 }
 /*--login/RegisterBtn--*/
 .btn{
@@ -317,32 +279,11 @@ label #cancel{
 }
 .btn:hover{
     transform: scale(0.97);
-    animation: changeBtn 1.2s linear  infinite alternate forwards; 
+    animation: changeLogin 1.2s linear  infinite alternate forwards; 
 }
 
-@keyframes changeBtn{
+@keyframes changeLogin{
     0%{background-color: white;
         color: black;}
     70%{background-color: black;}
-}
-.login-register{
-    margin: 30px 0 50px 0;
-    color: white;
-    font-weight: 200;
-    font-size: 0.9em;
-    text-align: center;
-}
-.login-register p a{
-    text-decoration: none;
-    color: red;
-    font-weight: 700;
-    font-size: 1em;
-    background-color: black;
-    border-radius: 6px;
-    padding: 5px;
-    transition: all 0.2s ease;
-}
-.login-register p a:hover{
-    background-color: white;
-    color: black;
 }
