@@ -2,6 +2,7 @@
 *{
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 body{
     line-height: 1.5;
@@ -263,7 +264,9 @@ h2{
 }
 /*----------*/
 .new_tracks,
-.featured{
+.featured,
+.artists,
+.genres_container{
     margin: auto;
     width: 90%;
     height: auto;
@@ -322,6 +325,19 @@ h3{
     width: 100%;
     height: 180px;
 }
+.img_player .artist-img{
+    border-radius: 50%;
+    width: 70%;
+    height: auto;
+}
+.artist_card h3{
+    display: flexbox;
+    text-align: center;
+    padding-top: 10px;
+}
+.artist_card{
+    margin-right: 20px;
+}
 /*-----------------*/
 /*.artist-img{
     position: relative;
@@ -342,6 +358,32 @@ h3{
     list-style-type: none;
     margin-right: 20px;
 }*/
+
+/*--------Genres-------*/
+.genres_container{
+    width: 75%;
+}
+.genres{
+    margin-top: 150px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    /*justify-content:space-around;*/
+}
+.genre_card{
+    margin-right: 50px;
+}
+.genres img{
+    width: 230px;
+    border-radius: 5%;
+}
+.genres img:hover{
+    color: red;
+}
+.genre_card h3,
+.genre_card p{
+    text-align: center;
+}
 
 /*----------------footer----------------*/
 .footer{ 
