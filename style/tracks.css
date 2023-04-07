@@ -188,59 +188,18 @@ label #cancel{
 h2{
     color: white;
     font-weight: bold;
-    padding-top: 100px;
-    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 10px;
 }
-/*----new_tracks&featured----*/
-/*
-.new_tracks_container{
-    max-width: 1500px;
-    width: 80%;     /*az egész csúszkás rész nagysága
-    padding: 30px 0;
-}
-/*
-.new_tracks-row{
-    display: flex;
-    flex-wrap: nowrap;     /*egy sorban maradnak az elemek
-}
 
-.new_tracks-col{
-    /*background-color: #bbbbbb;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 0px;
-    /*border: 4px solid red;
-    flex-basis: 270px;  /*a dobozok mérete
-}
-.slide_content{
-    margin: 0 30px;
-    overflow: hidden;
-}
-.beat_image{
-    position: relative;
-}
-.beat_image img{
-    object-fit: cover;
-    width: 250px;
-    height: 250px;
-}
-.beat_details,
-.beat_image{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
-}
-.beat_details h3{
-    font-weight: bold;
+h1 {
+    font-size: 50px;
     color: white;
+    font-weight: bold;
+    padding-top: 50px;
+    padding-left: 10px;
 }
-.beat_details p{
-    color: #656464;
-    font-style: italic;
-}
-*/
 
 /*-----new_tracks&featured-----*/
 /*-----sliders-----*/
@@ -282,6 +241,8 @@ h3{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: red;
+    height: auto;
 }
 .slider_content,
 .slider_content2{
@@ -301,7 +262,7 @@ h3{
     display: none;
 }
 .music_card{
-    width: 700px;
+    width: 200px;
     height: 270px;
     list-style-type: none;
     margin-right: 20px;
@@ -324,11 +285,6 @@ h3{
     height: 180px;
 }
 
-/*.artist-img{
-    position: relative;
-    border-radius: 50%;
-    transition: .3s linear;
-}*/
 .slider_content3{
     width: 100%;
     height: auto;
@@ -375,18 +331,7 @@ ul{
     text-transform: capitalize;
     margin-bottom: 35px;
 }
-/*
-.footer-col h4::before{
-    content: '';
-    position: absolute;
-    left: 7;
-    top: 27px;
-    background-color: #e91e63;
-    height: 2px;
-    box-sizing: border-box;
-    width: 50px;
-}
-*/
+
 .footer-col ul li:not(:last-child){
     margin-bottom: 10px;
 }
