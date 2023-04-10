@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+}
+/*---------------header-----------------*/ /*még nem reszponzív*/
+header{
+    background-color: black;
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    /*justify-content: space-between; /*középre tolja a menüsort*/
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    float: right;
+}
+nav div .profile-picture{
+    width: 50px;
+}
+.header_menu{
+    margin-right: 25px;
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px 25px;
+    margin: 0 10px;
+}
+nav ul li a{
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+nav ul li a:hover{
+    color: red;
+    transition: all .30s ease; /*0.30mp alatt színezi be az összes elemet, amire rávisszük az egeret*/
+}
+.active{
+    color: red !important;
+}
+/*-----hamburger_menu-----*/
+.menu_icon{
+    width: 46px;
+    left: 0;
+    margin: 15px 0;
+}
+.xmenu_icon:nth-child(2){
+    width: 30px;
+    left: 0;
+    margin: 20px 0 10px 0;
+}
+label #btn,
+label #cancel{
+    float: right;
+    line-height: 50px;
+    margin-right: 20px;
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+/*-----logo-----*/
+.logo{
+    color: red;
+    font-size: 50px;
+    text-decoration: none;
+    position: absolute;
+    top: 5px;
+    left: 5%;
+}
+.logo:hover{
+    transition: all 0.2s ease;
+    transform: scale(1.05);
+    /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+    animation: changeLogo 0.8s linear  infinite alternate forwards;   
+}
+@keyframes changeLogo{
+    0%{color: white;}
+}
+/*-----connection-----*/
+.connection{
+    display: flex;
+    align-items: center;
+}
+.connection a{
+    margin-left: 20px;
+    margin-right: 20px;
+    border: none;
+    color: red;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .2s;
+}
+.connection a:hover{
+    transform: scale(1.06);
+    cursor: pointer;
+    color: white;
+}
+/*-----responsivity-----*/
+@media (max-width: 1300px) {
+    nav ul li{
+        padding: 10px 5px;
+    }
+}
+@media (max-width: 1170px) {
+    .logo{
+        left: 6%;
+        font-size: 40px;
+        top: 15px;
+    }
+}
+@media (max-width: 1090px) {
+    nav ul{
+        margin-left: 20px;
+    }
+    nav ul li{
+        padding: 10px 5px;
+    }
+    nav ul li a{
+        font-size: 13px;
+    }
+}
+@media (width <= 1028px) {
+    label #btn{
+        display: block;
+    }
+    nav{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: black;
+        top: 60px;
+        left: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        transition: all .5s;
+    }
+    nav ul li,
+    nav div{
+        display: block;
+        margin: 40px;
+        line-height: 20px;
+    }
+    /* a sing up, register egymás alatt van
+    nav div{
+        display: flex;
+        flex-direction: column;
+    }
+    */
+    nav ul li a{
+        font-size: 20px;
+    }
+    .connection a{
+        font-size: 19px;
+    }
+    #check:checked ~ nav{
+        left: 0;
+    }
+    #check:checked ~ label #btn{
+        display: none;
+    }
+    #check:checked ~ label #cancel{
+        display: block;
+    }
+}
+    @media (width <= 900px) {
+    /*--profile picture--*/
+    .container .profile-menu .profile-picture{
+        width: 110px;
+        padding: 0 10px;
+    }
+    .container .profile-menu{
+        padding: 15px 0;
+    }
+}
+/*----------------main_body----------------*/
+.main_body{
+    background-color: #2b2a2a;
+    overflow: hidden;
+    padding-top: 100px;
+}
+/*-------profile menu--------*/
+a{
+    text-decoration: none;
+    color: #bbbbbb;
+    transition: all .1s ease-in;
+}
+.profile-menu{
+    padding: 15px 10px;
+}
+.profile-menu .datas{
+    text-align: left;
+    padding: 30px 30px;
+    justify-content: center;
+    text-align: center;
+}
+.profile-menu .datas li{
+    padding: 30px 0 15px 0;
+}
+a:hover{
+    color: red;
+}
+.container{
+    display: flex;
+    margin-bottom: 0;
+}
+.container .profile-menu div img{
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    /*border: 2px solid black;*/
+}
+/*-------profile data-------*/
+.container .profile-data{
+    padding: 0 20px;
+    width: 70%;
+}
+.profile-data .datas{
+    padding-left: 30px;
+    padding-top: 30px;
+}
+.profile-data .datas ul{
+    padding: 20px 0;
+}
+.container .waves-picture{
+    width: 100px;
+    right: 0;
+}
+.container .datas h2{
+    color: white;
+    padding-bottom: 10px;
+}
+.container .datas li{
+    font-size: 120%;
+    color: #bbbbbb;
+}
+/*----a----*/
+
+
+
+
+
+
+
+
+
+
+
+/*----------------footer----------------*/
+.footer{ 
+    height: 26vh;
+    background-color: #656464;
+    padding: 70px 10px;
+}
+
+.footer_container{
+    max-width: 1170px;
+    margin: auto;
+}
+
+ul{
+    list-style: none;
+}
+
+.footer_row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-col{
+    width: 25%;
+    padding: 0 15px;
+    position: relative;
+}
+.footer-col h4{
+    font-size: 18px;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+}
+/*
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 7;
+    top: 27px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+*/
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+}
+.footer-col ul li a:hover{
+    color: white;
+    padding-left: 2px;
+}
+.social a:hover{
+    color: red !important;
+}

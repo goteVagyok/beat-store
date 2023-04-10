@@ -40,7 +40,53 @@
         </nav>
     </header>
 
-    
+    <!----php---->
+    <?php
+        //aatbázis kapcsolat
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "beat-store";
+
+        //connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        //ellenőrzés, hogy sikeres-e a kapcsolat
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Űrlap adatok ellenőrzése és az adatbázisba való mentése
+        if (isset($_POST['submit'])) {//ha rányomott a gombra
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);//ez egy titkosítási fgv, a PASSW... egy konstans, és mindig az aktuális algoritmus kerül használatra a jelszó titkosításához
+            
+            //megnézzük, hogy a felhasználónév, email már létezik-e az adatbázisban
+            $sql_check = "SELECT * FROM users WHERE username='$username' OR email='$email'";
+            $result_check = $conn->query($sql_check);//lekérdezési szöveg alapján keresi meg az adatbázisban
+
+            //ha min egy ilyen volt már, akkor hibaüzenet
+            if ($result_check->num_rows > 0) {
+                echo "<p style='color:red;'>Hiba: a felhasználónév vagy az email cím már használatban van.</p>";
+            } else {
+                // Új felhasználó beszúrása az adatbázisba
+                $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+
+                if ($conn->query($sql) === TRUE) {
+                    // Sikeres regisztráció, átirányítás a sikeres oldalra
+                    header("Location: sikeres_regisztracio.html");
+                    exit();
+                } else {
+                    echo "Hiba: " . $sql . "<br>" . $conn->error;
+                }
+            }
+
+            // Adatbázis kapcsolat bezárása
+            $conn->close();
+        }
+    ?>
+
     <!--Login/Register-->
     <div class="card-holder">
         <div class="log_reg-card">
@@ -56,6 +102,9 @@
                     </div>
                     <div class="input-box">
                         <input id="password2" type="password" required><label for="password2"> Password</label>
+                    </div>
+                    <div class="input-box">
+                        <input id="password2" type="password" required><label for="password2"> Confirm password</label>
                     </div>
                     <div class="agreement">
                         <label for="agreement"><input type="checkbox" id="agreement">I agree the terms and conditions.</label>
@@ -85,8 +134,7 @@
                         <p>Register if you don't have an account <a href="#" class="register-link">Register</a></p>
                     </div>
                 </form>
-            </div>
-                          
+            </div>        
         </div>
     </div>
     <script src="script/reg_log.js"></script>

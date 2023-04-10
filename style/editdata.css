@@ -2,17 +2,13 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 body{
     line-height: 1.5;
     font-family: 'Poppins', sans-serif;
-    background-size: cover;
-    background-position: center;
 }
-/*---------------header-----------------*/
+/*---------------header-----------------*/ /*még nem reszponzív*/
 header{
-    top: 0;
     background-color: black;
     z-index: 1000;
     position: fixed;
@@ -28,12 +24,11 @@ nav{
     padding-right: 5%;
     float: right;
 }
+nav div .profile-picture{
+    width: 50px;
+}
 .header_menu{
     margin-right: 25px;
-}
-.header .active{
-    color: white;
-    transition: all .30s ease;
 }
 nav ul li{
     list-style: none;
@@ -52,7 +47,9 @@ nav ul li a:hover{
     color: red;
     transition: all .30s ease; /*0.30mp alatt színezi be az összes elemet, amire rávisszük az egeret*/
 }
-
+.active{
+    color: red !important;
+}
 /*-----hamburger_menu-----*/
 .menu_icon{
     width: 46px;
@@ -108,15 +105,11 @@ label #cancel{
     font-weight: bold;
     font-size: 15px;
     transition: .2s;
-    background-color: transparent;
 }
 .connection a:hover{
     transform: scale(1.06);
     cursor: pointer;
-}
-.connection a.active{
-    color: red;
-    animation: changeLogo 0.8s linear  infinite alternate forwards;  
+    color: white;
 }
 /*-----responsivity-----*/
 @media (max-width: 1300px) {
@@ -140,9 +133,6 @@ label #cancel{
     }
     nav ul li a{
         font-size: 13px;
-    }
-    .connection a{
-        font-size: 15px;
     }
 }
 @media (width <= 1028px) {
@@ -188,69 +178,86 @@ label #cancel{
     #check:checked ~ label #cancel{
         display: block;
     }
-}
-/*--------Register&Sign_in---------*/
-.card-holder{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-.log_reg-card{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 500px;
-    width: 800px;
-    background-color: transparent;
-    border: 2px solid rgba(39, 39, 39, 0.5); 
-    backdrop-filter: blur(5px);
-    border-radius: 10px;
-    /*box-shadow: vízszintesen függőlegesen blur szín */
-    box-shadow: 0 0 30px rgb(0, 0, 0);
-    transition: height .4s ease;
-    overflow: hidden;
-}
-.form-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 40px 60px;
-}
-/*---a két kártya cseréje---*/
-.log_reg-card.active{
-    height: 580px;
-}
-.log_reg-card .login{
-    transition: transform 0.3s ease;
-    transform: translateX(0);
-}
-.log_reg-card.active .login{    /*elmegy a bal oldalra, hogy legyen hely a registration card-nak*/
-    transition: none;
-    transform: translateX(-600px);
-}
-.log_reg-card .registration{
-    position: absolute;
-    transform: translateX(600px);
-}
-.log_reg-card.active .registration{    /*elmegy a bal oldalra, hogy legyen hely a registration card-nak*/
-    transition: transform 0.3s ease;
-    transform: translateX(0);
+    /*--profile picture--*/
+    .container .profile-menu .profile-picture{
+        width: 110px;
+        padding: 0 10px;
+    }
+    .container .profile-menu{
+        padding: 15px 0;
+    }
 }
 
-/*--h2--*/
-.login h2{
-    padding-bottom: 5px;
-    color: black;
-    font-size: 300%;
+/*----------------main_body----------------*/
+.main_body{
+    background-color: #2b2a2a;
+    overflow: hidden;
+    padding-top: 100px;
 }
-.registration h2{
-    padding-top: 50px;
-    color: black;
-    font-size: 300%;
+/*-------profile menu--------*/
+a{
+    text-decoration: none;
+    color: #bbbbbb;
+    transition: all .1s ease-in;
+}
+.profile-menu{
+    padding: 15px 10px;
+}
+.profile-menu .datas{
+    text-align: left;
+    padding: 30px 30px;
+    justify-content: center;
+    text-align: center;
+}
+.profile-menu .datas li{
+    padding: 30px 0 15px 0;
+}
+a:hover{
+    color: red;
+}
+.container{
+    display: flex;
+    margin-bottom: 0;
+}
+.container .profile-menu div img{
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+}
+.change-password{
+    padding-top: 20px;
+    
+}
+/*-------profile data-------*/
+.container .profile-data{
+    padding: 0 20px;
+    width: 70%;
+}
+.profile-data .datas{
+    padding-left: 30px;
+    padding-top: 30px;
+}
+.profile-data .datas ul{
+    padding: 20px 0;
+}
+.container .waves-picture{
+    width: 100px;
+    right: 0;
+}
+.container .datas h2{
+    color: white;
+    padding-bottom: 10px;
+}
+.container li{
+    font-size: 120%;
+    color: #bbbbbb;
+}
+.profile-data .datas .profile-picture{
+    width: 80px;
+    padding: 5px;
+    border: 3px solid black;
+    
 }
 
 /*--input--*/
@@ -259,7 +266,6 @@ label #cancel{
     width: 100%;
     height: 40px;
     margin-top: 30px;
-    margin-bottom: 20px;
     border-bottom: 3px solid black;
 }
 .input-box label{
@@ -282,31 +288,11 @@ label #cancel{
 .input-box input:valid~label{   /*a mezőbe('input') belekattintásnál és beleírásnál is a kövekező történik a 'label'-lel*/
     top: -7px;
 }
-/*--remember-forgot--*/
-.agreement{
-    padding-right: 80px;
-}
-.remember-forgot,
-.agreement{
-    font-size: 0.9rem;
-    color: white;
-    font-weight: 400;
-    margin: 30px 0 10px 0;
-    display: flex;
-    justify-content: space-between;
-}
-.remember-forgot label input,
-.agreement label input{
-    accent-color: black;    /*checkbox színe*/
-    margin-right: 5px;
-}
-.remember-forgot a{
-    color: black;
-    font-weight: 500;
-}
-/*--login/RegisterBtn--*/
+/*--ChangeBtn--*/
 .btn{
-    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 150px;
     height: 45px;
     color: red;
     background-color: black;
@@ -320,32 +306,82 @@ label #cancel{
 }
 .btn:hover{
     transform: scale(0.97);
-    animation: changeLogin 1.2s linear  infinite alternate forwards; 
+    animation: changeBtn 1.2s linear  infinite alternate forwards; 
 }
 
-@keyframes changeLogin{
+@keyframes changeBtn{
     0%{background-color: white;
         color: black;}
     70%{background-color: black;}
 }
-.login-register{
-    margin: 30px 0 50px 0;
+
+
+
+
+
+
+
+
+/*----------------footer----------------*/
+.footer{ 
+    height: 26vh;
+    background-color: #656464;
+    padding: 70px 10px;
+}
+
+.footer_container{
+    max-width: 1170px;
+    margin: auto;
+}
+
+ul{
+    list-style: none;
+}
+
+.footer_row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-col{
+    width: 25%;
+    padding: 0 15px;
+    position: relative;
+}
+.footer-col h4{
+    font-size: 18px;
     color: white;
-    font-weight: 200;
-    font-size: 0.9em;
-    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 35px;
 }
-.login-register p a{
+/*
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 7;
+    top: 27px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+*/
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: white;
     text-decoration: none;
-    color: red;
-    font-weight: 700;
-    font-size: 1em;
-    background-color: black;
-    border-radius: 6px;
-    padding: 5px;
-    transition: all 0.2s ease;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
 }
-.login-register p a:hover{
-    background-color: white;
-    color: black;
+.footer-col ul li a:hover{
+    color: white;
+    padding-left: 2px;
+}
+.social a:hover{
+    color: red !important;
 }
