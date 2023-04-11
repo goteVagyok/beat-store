@@ -30,11 +30,12 @@
 
         //kép feldolgozása
         if(count($errors)===0 && $fileError===0){
-            if($fileSize<)
-            change_picture($user_picture, $user_name);
-            $success=true;
-            $_POST=array();//$_POST ürítése
-            header("Location: profile.php");
+            if($fileSize<30) {
+                change_picture($user_picture, $user_name);
+                $success=true;
+                $_POST=array();//$_POST ürítése
+                header("Location: profile.php");
+            }
         }else{
             $success=false;
             $_POST=array();//$_POST ürítése
@@ -108,7 +109,7 @@
             <ul class="header_menu">
                 <li><a href="tracks.html" class="menus">Tracks</a></li>
                 <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
                 <li><a href="contact.html" class="menus">Contact</a></li>
             </ul>
             <div>
@@ -180,7 +181,7 @@
                     <ul>
                         <li><a href="#">Pricing</a></li>
                         <li><a href="register.html">Register</a></li>
-                        <li><a href="login.html">Login</a></li>
+                        <li><a href="login-register.php">Login</a></li>
                         <li><a href="contact.html">Contact us</a></li>
                     </ul>
                 </div>

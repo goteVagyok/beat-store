@@ -7,7 +7,7 @@
         $dbname = "beat-store";
 
         $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed.");
-        if(false==mysqli_select_db($conn, "beat-store")){
+        if(!mysqli_select_db($conn, "beat-store")){
             return null;
         }
 
@@ -24,7 +24,7 @@
         }
         $result=mysqli_query( $conn, "SELECT USERS.username, USERS.password, USERS.email FROM users" );
 
-        if( $result==false ){
+        if(!$result){
             die(mysqli_error($conn));
         }
         mysqli_close($conn);
@@ -37,7 +37,7 @@
         }
         $result=mysqli_query( $conn, "SELECT MUSIC.title, MUSIC.artist, MUSIC.file_path FROM music LEFT JOiN users ON MUSIC.user_id=USERS.id");
 
-        if( $result==false ){
+        if(!$result){
             die(mysqli_error($conn));
         }
         mysqli_close($conn);
@@ -53,7 +53,7 @@
         mysqli_stmt_bind_param($stmt, "d", $user_id);
 
         $result=mysqli_stmt_execute($stmt);
-        if( $result==false ){
+        if(!$result){
             die(mysqli_error($conn));
         }
 
@@ -69,7 +69,8 @@
         return $array;
     }
 
-    function set_user($username, $password, $email){
+    function set_user($username, $password, $email): bool
+    {
 
         if( !($conn=server_connect()) ){
             return false;
@@ -82,7 +83,8 @@
         return $success;
     }
 
-    function set_music($user_id, $title, $artist, $file_path){
+    function set_music($user_id, $title, $artist, $file_path): bool
+    {
 
         if( !($conn=server_connect()) ){
             return false;
@@ -105,7 +107,7 @@
 
         mysqli_stmt_bind_param($stmt, "ss", $picture_path, $username);
         $success=mysqli_stmt_execute($stmt);
-        if($success==false){
+        if(!$success){
             die(mysqli_error($conn));
         }
         mysqli_close($conn);
@@ -122,11 +124,24 @@
 
         mysqli_stmt_bind_param($stmt, "ss", $password, $username);
         $success=mysqli_stmt_execute($stmt);
-        if($success==false){
+        if(!$success){
             die(mysqli_error($conn));
         }
         mysqli_close($conn);
         return $success;
+    }
+
+    function fetch_user_data($username): false|array|null
+    {
+        $query = "select * from users where username = '$username' limit 1";
+        $result = mysqli_query(server_connect(), $query);
+
+        if($result && mysqli_num_rows($result) > 0) {
+
+            return mysqli_fetch_assoc($result);
+
+        }
+        return null;
     }
 
 ?>

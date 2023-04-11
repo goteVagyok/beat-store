@@ -1,13 +1,27 @@
 <?php
 
     include "functions.php";
+    session_start();
 
-    
+    $user_name="placeholder";
+    $user_email="placeholder";
+
     //aktuális felhasználó adatai
-    $user_name="nameee";
-    $user_email="emailll";
-    //alap prof.lép
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+        $user_name=$_SESSION['user']['username'];
+        $user_email=$_SESSION['user']['email'];
+    } else {
+        header("Location: login.php");
+    }
+    //alap prof.kép
     $user_picture="assets\img\profile_picture.png";
+
+    if(isset($_POST['submit'])) { //TODO nem mukodik a kijelentkezes
+        echo "nyomod";
+        $_SESSION['loggedin'] = false;
+        $_SESSION['user'] = null;
+        header("Location: beat.html");
+    }
     
 
 
@@ -44,7 +58,7 @@
             <ul class="header_menu">
                 <li><a href="tracks.html" class="menus">Tracks</a></li>
                 <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
                 <li><a href="contact.html" class="menus">Contact</a></li>
             </ul>
             <div>
@@ -81,9 +95,13 @@
                         <h2>Email</h2>
                         <li><?php echo "$user_email" ?></li>
                     </ul>
+                    <ul>
+                        <h2>Logout</h2>
+                        <li><form><input name="logout" class="button" type="submit" value="Logout"></form></li>
+                    </ul>
                 </ul>
             </div>
-            <img class="waves-picture" src="assets\img\waves.png" alt="waves_picture">
+            <img class="waves-picture" src="assets/img/waves.png" alt="waves_picture">
         </div>
     </main>
 
@@ -103,7 +121,7 @@
                     <ul>
                         <li><a href="#">Pricing</a></li>
                         <li><a href="register.html">Register</a></li>
-                        <li><a href="login.html">Login</a></li>
+                        <li><a href="login-register.php">Login</a></li>
                         <li><a href="contact.html">Contact us</a></li>
                     </ul>
                 </div>

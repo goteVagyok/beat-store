@@ -30,7 +30,7 @@
             <ul class="header_menu">
                 <li><a href="tracks.html" class="menus">Tracks</a></li>
                 <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
                 <li><a href="contact.html" class="menus">Contact</a></li>
             </ul>
             <div class="connection">

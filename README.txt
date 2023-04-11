@@ -19,7 +19,7 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   role ENUM('user', 'admin') DEFAULT 'user',
-  profile_picture VARCHAR(255) DEFAULT 'assets\img\profile_picture'
+  profile_picture VARCHAR(255) DEFAULT 'assets/img/profile_picture.png'
 );
 CREATE TABLE music (
     music_id INT NOT NULL AUTO_INCREMENT,

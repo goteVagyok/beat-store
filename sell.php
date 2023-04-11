@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+    // ha be van jelentkezve a felhasznalo
+
+    $user = $_SESSION['user'];
+
+} else {
+    //ha nincs bejelentkezve akkor csak dobja a login oldalra
+    header("login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +23,15 @@
     <meta name="description" content="licenciába adás">
     <meta name="keywords" content="HTML,CSS,webterv">
     <link rel="icon" href="assets/img/icon.jpg">
-    <title>BEAT STORE</title>
+    <title>Sell your music</title>
 
-    <!--css-->
     <link rel="stylesheet" href="style/beat.css">
+    <link rel="stylesheet" href="style/sell.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="style/licensing.css">
 </head>
 <body>
 
+<!--navbar&logo-->
 <header class="header">
     <input type="checkbox" id="check">
     <label for="check">
@@ -24,12 +39,12 @@
         <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
     </label>
     <a href="beat.html" class="logo">BEAT STORE</a>
-    <nav>
+    <nav class="navbar">
         <ul class="header_menu">
             <li><a href="tracks.html" class="menus">Tracks</a></li>
-            <li><a href="licensing.html" class="menus active">Licensing</a></li>
-            <li><a href="sell.php" class="menus">Sell your music</a></li>
-            <li><a href="#" class="menus">Contact</a></li>
+            <li><a href="licensing.html" class="menus">Licensing</a></li>
+            <li><a href="sell.php" class="menus active">Sell your music</a></li>
+            <li><a href="contact.html" class="menus">Contact</a></li>
         </ul>
         <div class="connection">
             <a href="login-register.php">Login</a>
@@ -38,41 +53,58 @@
     </nav>
 </header>
 
-<div class="licensing-table">
-
-    <table>
-        <caption>Beware, pirates!</caption>
-        <tr>
-            <th>Private use</th>
-            <th>Public non-profit use</th>
-            <th>Public for-profit use</th>
-        </tr>
-        <tr>
-            <td>
-                You may use the purchased beat(s) for any private
-                and non-commercial case without paying royalties
-                to the composing artist(s). just don't take the piss.
-            </td>
-            <td>
-                Non-profit use implies no monetary transaction between
-            you and a streaming platform, music label or any other entity.
-            Should your song hit 2 million combined listeners, you must contact
-            the composing artist(s), who are entitled for no more than
-            10 times the purchasing price of the beat(s).
-            </td>
-            <td>
-                For-profit use implies monetary transaction between
-                you and a streaming platform, music label or any other entity.
-                The composer(s) are entitled to 20% of your income from the beat
-                they sold. Both in the case of a one-time transaction and any
-                subsequent income you may have generated with your song.
-            </td>
-        </tr>
-    </table>
-
-</div>
 
 
+<form>
+    <label for="title">Beat title</label><br/>
+    <input type="text" id="title" name="title"><br/>
+
+    <label for="artist">Artist</label><br/>
+    <input type="text" id="artist" name="artist" value="<?php echo $user['username'] ?>"> ><br/>
+
+    <label for="bpm">BPM</label><br>
+    <input type="number" id="bpm" name="bpm"><br/>
+
+    <label for="price">Price</label><br>
+    <input type="number" id="price" name="price"><br/>
+
+    <label>Key</label><br/>
+    <label>
+        <select>
+            <option disabled selected>Choose</option>
+            <optgroup label="minor">
+                <option> Am </option>
+                <option> Bm </option>
+                <option> Cm </option>
+                <option> Dm </option>
+                <option> Em </option>
+                <option> Fm </option>
+                <option> Gm </option>
+            </optgroup>
+            <optgroup label="major">
+                <option> AM </option>
+                <option> BM </option>
+                <option> CM </option>
+                <option> DM </option>
+                <option> EM </option>
+                <option> FM </option>
+                <option> GM </option>
+            </optgroup>
+        </select>
+    </label><br/>
+
+    <label for="cover">Cover image</label><br/>
+    <input class="button" type="file" id="cover" name="cover"><br/>
+
+    <label for="beat">Beat</label><br/>
+    <input class="button" type="file" id="beat" name="beat"><br/>
+
+    <input class="button" type="submit" value="List my beat">
+    <input class="button" type="reset" value="Clear fields"><br/>
+</form>
+
+
+<!--footer-->
 <footer class="footer">
     <div class="footer_container">
         <div class="footer_row">
@@ -109,6 +141,8 @@
 
 
 </footer>
+
+
 
 </body>
 </html>
