@@ -10,6 +10,7 @@
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
         $user_name=$_SESSION['user']['username'];
         $user_email=$_SESSION['user']['email'];
+        session_abort();
     } else {
         header("Location: login.php");
     }
@@ -97,7 +98,7 @@
                     </ul>
                     <ul>
                         <h2>Logout</h2>
-                        <li><form><input name="logout" class="button" type="submit" value="Logout"></form></li>
+                        <li><form action="#"><input name="submit" class="button" type="submit" value="Logout"></form></li>
                     </ul>
                 </ul>
             </div>

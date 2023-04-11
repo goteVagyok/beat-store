@@ -5,6 +5,38 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
     // ha be van jelentkezve a felhasznalo
 
     $user = $_SESSION['user'];
+    $username = $user['username'];
+
+    $upload_success = false;
+
+    if(isset($_POST["submit"])) {
+        $target_dir = getcwd() . "uploads/";
+        $target_file = $target_dir . basename($_FILES['beat']['name']);
+        $file_type = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        if($file_type == "mp3" && !file_exists($target_file)) { // mp3 es nem letezik
+            $upload_success = true;
+        } else {
+            /*
+            echo "<strong>checkek nem jok</strong>";
+            echo "<br>";
+            echo "type: ";
+            echo $file_type == "mp3";
+            echo "<br>";
+            echo "exists: ";
+            echo !file_exists($target_file);
+            echo "<br>";
+            */
+        }
+        if($upload_success) {
+             if(move_uploaded_file($_FILES['beat']['name'], $target_file)) {
+                 echo "siker";
+             } else {
+                 echo "baj de nagy";
+             }
+        }
+    }
+
 
 } else {
     //ha nincs bejelentkezve akkor csak dobja a login oldalra
@@ -30,7 +62,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 <body>
-
 <!--navbar&logo-->
 <header class="header">
     <input type="checkbox" id="check">
@@ -54,13 +85,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
 </header>
 
 
-
-<form>
+<form action="sell.php" method="post" enctype="multipart/form-data">
     <label for="title">Beat title</label><br/>
     <input type="text" id="title" name="title"><br/>
 
     <label for="artist">Artist</label><br/>
-    <input type="text" id="artist" name="artist" value="<?php echo $user['username'] ?>"> ><br/>
+    <input type="text" id="artist" name="artist" value="<?php echo $user['username'] ?>" ><br/>
 
     <label for="bpm">BPM</label><br>
     <input type="number" id="bpm" name="bpm"><br/>
@@ -99,7 +129,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
     <label for="beat">Beat</label><br/>
     <input class="button" type="file" id="beat" name="beat"><br/>
 
-    <input class="button" type="submit" value="List my beat">
+    <input name ="submit" class="button" type="submit" value="List my beat">
     <input class="button" type="reset" value="Clear fields"><br/>
 </form>
 
@@ -128,21 +158,4 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
                 <h4>Social Media</h4>
                 <div class="social">
                     <ul>
-                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
-                        <li><a href="https://www.instagram.com/unico_uniuni/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="https://www.facebook.com/profile.php" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a href="https://www.mme.hu/" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <p class="beatStore2023">&copy; 2023 Beat Store</p>
-    </div>
-
-
-</footer>
-
-
-
-</body>
-</html>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9W
