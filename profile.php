@@ -1,13 +1,19 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["user"])) {
+
+        header("Location: login-register.php");
+    }
 
     include "functions.php";
 
     
     //aktuális felhasználó adatai
-    $user_name="nameee";
-    $user_email="emailll";
+    $user_name=$_SESSION["user"]["username"];
+    $user_email=$_SESSION["user"]["email"];
     //alap prof.lép
-    $user_picture="assets\img\profile_picture.png";
+    //$user_picture="assets\img\profile_picture.png";
+    $user_picture=$_SESSION["user"]["profile_picture"];
     
 
 
@@ -39,13 +45,13 @@
             <img src="assets/img/menu2.png" alt="menu" id="btn" class="menu_icon">
             <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
         </label>
-        <a href="beat.html" class="logo">BEAT STORE</a>
+        <a href="beat.php" class="logo">BEAT STORE</a>
         <nav class="navbar">
             <ul class="header_menu">
-                <li><a href="tracks.html" class="menus">Tracks</a></li>
-                <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
-                <li><a href="contact.html" class="menus">Contact</a></li>
+                <li><a href="tracks.php" class="menus">Tracks</a></li>
+                <li><a href="licensing.php" class="menus">Licensing</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
+                <li><a href="contact.php" class="menus">Contact</a></li>
             </ul>
             <div>
                 <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
@@ -81,6 +87,10 @@
                         <h2>Email</h2>
                         <li><?php echo "$user_email" ?></li>
                     </ul>
+                    <ul>
+                        <h2>Profile picture's path</h2>
+                        <li><?php echo "$user_picture" ?></li>
+                    </ul>
                 </ul>
             </div>
             <img class="waves-picture" src="assets\img\waves.png" alt="waves_picture">
@@ -94,7 +104,7 @@
                 <div class="footer-col">
                     <h4>Beat Store</h4>
                     <ul>
-                        <li><a href="licensing.html">About us</a></li>
+                        <li><a href="licensing.php">About us</a></li>
                         <li><a href="#">Merch</a></li>
                     </ul>
                 </div>
@@ -102,9 +112,9 @@
                     <h4>Support</h4>
                     <ul>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="register.html">Register</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
+                        <li><a href="register.php">Register</a></li>
+                        <li><a href="login-register.php">Login</a></li>
+                        <li><a href="contact.php">Contact us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">

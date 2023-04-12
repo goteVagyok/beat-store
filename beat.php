@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  $user_picture=$_SESSION["user"]["profile_picture"];
+
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -23,18 +28,23 @@
             <img src="assets/img/menu2.png" alt="menu" id="btn" class="menu_icon">
             <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
         </label>
-        <a href="beat.html" class="logo">BEAT STORE</a>
+        <a href="beat.php" class="logo">BEAT STORE</a>
         <nav class="navbar">
             <ul class="header_menu">
-                <li><a href="tracks.html" class="menus">Tracks</a></li>
-                <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
-                <li><a href="contact.html" class="menus">Contact</a></li>
+                <li><a href="tracks.php" class="menus">Tracks</a></li>
+                <li><a href="licensing.php" class="menus">Licensing</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
+                <li><a href="contact.php" class="menus">Contact</a></li>
             </ul>
-            <div class="connection">
-                <a href="login.html">Login</a>
-                <a href="register.html">Register</a>
-            </div>
+            <?php if (isset($_SESSION["user"])) { ?>
+                <div>
+                    <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
+                </div>
+            <?php } else { ?>
+                <div class="connection">
+                    <a href="login-register.php">Login</a>
+                </div>
+            <?php } ?>
         </nav>
     </header>
 
@@ -335,9 +345,9 @@
                     <h4>Support</h4>
                     <ul>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="register.html">Register</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
+                        <li><a href="register.php">Register</a></li>
+                        <li><a href="login.php">Login</a></li>
+                        <li><a href="contact.php">Contact us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -358,6 +368,6 @@
 
     </footer>
     <!--script-->
-    <script src="script/tracks.js"></script>
+    <script src="script/scrolls.js"></script>
 </body>
 </html>

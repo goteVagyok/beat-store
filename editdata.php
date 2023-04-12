@@ -1,50 +1,66 @@
 <?php
+    session_start();
     include "functions.php";
 
-    $errors=[];
+    $picture_errors=[];
+    $password_errors=[];
 
-    //aktuális felhasználó adatai
-    $user_name="nameee";
-    $user_email="emailll";
+
     //alap prof.lép
-    $user_picture="assets\img\profile_picture.png";
-    $user_id=1;
+    $user_picture="assets\profilepictures\profile_picture.png";
+    $user_picture=$_SESSION["user"]["profile_picture"];
+    $user_id=$_SESSION["user"]["id"];
 
     if( isset($_POST["picture"]) ){
 
         if(!isset($_FILES["file"])){
-            $errors[]="Choose a picture";
+            $picture_errors[]="Choose a picture";
         }
 
         $file=$_FILES["file"];
-        $fileName = $_FILES['file']['name'];
-        $fileTmpName = $_FILES['file']['tmp_name'];
-        $fileSize = $_FILES['file']['size'];
-        $fileError = $_FILES['file']['error'];
-        $fileType = $_FILES['file']['type'];
+        $fileName = $_FILES["file"]["name"];
+        $fileTmpName = $_FILES["file"]["tmp_name"];//a kép elérési útvonala + az ideiglenes neve
+        $fileSize = $_FILES["file"]["size"];
+        $fileError = $_FILES["file"]["error"];
+        $fileType = $_FILES["file"]["type"];
 
-        $fileExt=explode('.',$fileName);//a file nevének tagolása .-tal
-        $fileActualExt=strtolower(end($fileExt));
 
-        $allowed=array('png','jpg','jpeg','pdf');//képek formátuma
+        $filePart=explode('.',$fileName);//a file nevének tagolása .-tal
+        $fileActualExt=strtolower(end($filePart));// . utáni string + kisbetűssé változtatás
+
+        $allowed=array('png','jpg','jpeg');//képek formátuma
 
         //kép feldolgozása
-        if(count($errors)===0 && $fileError===0){
-            if($fileSize<)
-            change_picture($user_picture, $user_name);
-            $success=true;
-            $_POST=array();//$_POST ürítése
-            header("Location: profile.php");
+        if(in_array($fileActualExt, $allowed)){//ha a file str végén a megengedett típusú formátum van
+            if(count($picture_errors)===0 && $fileError===0){
+                if($fileSize<31457280){     //30MB = 31457280 byte
+                    //$newFileName=uniqid('',true).".".$fileActualExt;//uniqid()=egy véletlenszerű, egyedi string azonosító, kb 23 karakter hosszú
+                    $user_picture="assets/profilepictures/".$fileName;
+                    move_uploaded_file($fileTmpName, $user_picture);//áthelyezés a $user_picture változóba
+
+                    change_picture($fileTmpName, $user_name);
+                    $success=true;
+                    $_POST=array();//$_POST ürítése
+                    header("Location: profile.php");
+                }else{
+                    $picture_errors[]="The file's size is too big";
+                }
+            }else{
+                $success=false;
+                $_POST=array();//$_POST ürítése
+                $picture_errors[]="Error during the file's uploading";
+            }
         }else{
             $success=false;
-            $_POST=array();//$_POST ürítése
+            $_POST=array();
+            $picture_errors[]="The file's format is not allowed!";
         }
         
 
     }elseif( isset($_POST["password"]) ){
 
         if(!isset($_POST["password1"]) || trim($_POST["password1"]) === "" || !isset($_POST["password2"]) || trim($_POST["password2"]) === ""){
-            $errors[]="The password is required!";
+            $password_errors[]="The password is required!";
         }
 
         $password1=$_POST["password1"];
@@ -52,14 +68,14 @@
 
         //jelszó hosszának megszabása
         if(strlen($password1)<6){
-            $errors[]="The minimum password length is 6!";
+            $password_errors[]="The minimum password length is 6!";
         }
         //a két jelszó egyezése
         if($password1!==$password2){
-            $errors[]="The passwords do not match!";
+            $password_errors[]="The passwords do not match!";
         }
 
-        if(count($errors)===0){
+        if(count($password_errors)===0){
             //$passw hashelése
             $password1=password_hash($password1, PASSWORD_DEFAULT);
             //jelsuó módosítása
@@ -103,13 +119,13 @@
             <img src="assets/img/menu2.png" alt="menu" id="btn" class="menu_icon">
             <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
         </label>
-        <a href="beat.html" class="logo">BEAT STORE</a>
+        <a href="beat.php" class="logo">BEAT STORE</a>
         <nav class="navbar">
             <ul class="header_menu">
-                <li><a href="tracks.html" class="menus">Tracks</a></li>
-                <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
-                <li><a href="contact.html" class="menus">Contact</a></li>
+                <li><a href="tracks.php" class="menus">Tracks</a></li>
+                <li><a href="licensing.php" class="menus">Licensing</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
+                <li><a href="contact.php" class="menus">Contact</a></li>
             </ul>
             <div>
                 <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
@@ -139,12 +155,21 @@
                 <div class="datas">
                     <div>
                         <h2>Change profile picture</h2>
-                        <form action="editdata.php" method="post">
+                        <form action="editdata.php" method="post" enctype="multipart/form-data">
                             <img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture">
                             <br>
                             <input type="file" name="file">
                             <button type="submit" class="btn" name="picture">Change picture</button>
                         </form>
+                        <?php
+                            if (isset($success) && $success === TRUE) {  // ha nem volt hiba, akkor a regisztráció sikeres
+                                //echo "<p>Successfully picture uplode!</p>";
+                            } else {                                // az esetleges hibákat kiírjuk egy-egy bekezdésben
+                                foreach ($picture_errors as $error) {
+                                echo "<strong>" . $error . "</strong>"."<br>";
+                                }
+                            }
+                        ?>
                     </div>
                     <div class="change-password">
                         <h2>Change password</h2>
@@ -157,6 +182,15 @@
                             </div>
                             <button type="submit" class="btn" name="password">Change password</button>
                         </form>
+                        <?php
+                            if (isset($success) && $success === TRUE) {  // ha nem volt hiba, akkor a regisztráció sikeres
+                                //echo "<p>Successfully password changing!</p>";
+                            } else {                                // az esetleges hibákat kiírjuk egy-egy bekezdésben
+                                foreach ($password_errors as $error) {
+                                echo "<strong>" . $error . "</strong>"."<br>";
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -171,7 +205,7 @@
                 <div class="footer-col">
                     <h4>Beat Store</h4>
                     <ul>
-                        <li><a href="licensing.html">About us</a></li>
+                        <li><a href="licensing.php">About us</a></li>
                         <li><a href="#">Merch</a></li>
                     </ul>
                 </div>
@@ -179,9 +213,9 @@
                     <h4>Support</h4>
                     <ul>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="register.html">Register</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
+                        <li><a href="register.php">Register</a></li>
+                        <li><a href="login-register.php">Login</a></li>
+                        <li><a href="contact.php">Contact us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">

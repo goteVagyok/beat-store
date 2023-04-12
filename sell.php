@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  $user_picture=$_SESSION["user"]["profile_picture"];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,23 +28,28 @@
         <img src="assets/img/menu2.png" alt="menu" id="btn" class="menu_icon">
         <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
     </label>
-    <a href="beat.html" class="logo">BEAT STORE</a>
+    <a href="beat.php" class="logo">BEAT STORE</a>
     <nav class="navbar">
         <ul class="header_menu">
-            <li><a href="tracks.html" class="menus">Tracks</a></li>
-            <li><a href="licensing.html" class="menus">Licensing</a></li>
-            <li><a href="sell.html" class="menus active">Sell your music</a></li>
-            <li><a href="contact.html" class="menus">Contact</a></li>
+            <li><a href="tracks.php" class="menus">Tracks</a></li>
+            <li><a href="licensing.php" class="menus">Licensing</a></li>
+            <li><a href="sell.php" class="menus active">Sell your music</a></li>
+            <li><a href="contact.php" class="menus">Contact</a></li>
         </ul>
-        <div class="connection">
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
-        </div>
+        <?php if (isset($_SESSION["user"])) { ?>
+            <div>
+                <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
+            </div>
+        <?php } else { ?>
+            <div class="connection">
+                <a href="login-register.php">Login</a>
+            </div>
+        <?php } ?>
     </nav>
 </header>
 
 
-
+<?php if (isset($_SESSION["user"])) { ?>
 <form>
     <label for="title">Beat title</label><br/>
     <input type="text" id="title" name="title"><br/>
@@ -90,6 +100,17 @@
     <input class="button" type="submit" value="List my beat">
     <input class="button" type="reset" value="Clear fields"><br/>
 </form>
+<?php } else { ?>
+    <div class="card-holder">
+        <div class="log_reg-card">
+            <div class="message">
+                <strong class="text">Please sing in or register to upload and sell your musics!</strong>
+            </div>
+            <a href="login-register.php"><button type="submit" class="btn">I want to sell my musics!</button></a>
+        </div>
+    </div>
+<?php } ?>
+
 
 
 <!--footer-->

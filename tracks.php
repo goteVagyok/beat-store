@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  $user_picture=$_SESSION["user"]["profile_picture"];
+
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -23,33 +28,47 @@
             <img src="assets/img/menu2.png" alt="menu" id="btn" class="menu_icon">
             <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
         </label>
-        <a href="beat.html" class="logo">BEAT STORE</a>
+        <a href="beat.php" class="logo">BEAT STORE</a>
         <nav class="navbar">
             <ul class="header_menu">
-                <li><a href="tracks.html" class="menus active">Tracks</a></li>
-                <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
-                <li><a href="contact.html" class="menus">Contact</a></li>
+                <li><a href="tracks.php" class="menus active">Tracks</a></li>
+                <li><a href="licensing.php" class="menus">Licensing</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
+                <li><a href="contact.php" class="menus">Contact</a></li>
             </ul>
-            <div class="connection">
-                <a href="login.html">Login</a>
-                <a href="register.html">Register</a>
-            </div>
+            <?php if (isset($_SESSION["user"])) { ?>
+                <div>
+                    <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
+                </div>
+            <?php } else { ?>
+                <div class="connection">
+                    <a href="login-register.php">Login</a>
+                </div>
+            <?php } ?>
         </nav>
     </header>
 
     <main class="main_body">
         <!------new_tracks------>
         <div class="new_tracks">
-            <h1>
-                Generes
-            </h1>
-        </div>
-        <div class="new_tracks">
             <div class="slider_head">
-                <h2>Hip-Hop</h2>
+                <h2>New tracks</h2>
+                <div class="slider-btn">
+                    <img id="left_scroll" src="assets/img/arrow_left.png" alt="left_arrow">
+                    <img id="right_scroll" src="assets/img/arrow_right.png" alt="right_arrow">
+                </div>
             </div>
             <ul class="slider_content">
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat1.jpg" alt="beat1" onclick="document.getElementById('audio_play1').play(); return false;"/>
+                        <audio id="audio_play1">
+                            <source src="assets/audio/andromeda.mp3">
+                        </audio>
+                    </div>
+                    <h3>ANDROMEDA</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
                 <li class="music_card">
                     <div class="img_player">
                         <img class="audio-img" src="assets/img/beat2.jpg" alt="beat2" onclick="document.getElementById('audio_play2').play(); return false;"/>
@@ -70,7 +89,16 @@
                     <h3>Triumph</h3>
                     <p class="title">$24.5 | 123 BPM</p>
                 </li>
-
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat4.jpg" alt="beat4" onclick="document.getElementById('audio_play4').play(); return false;"/>
+                        <audio id="audio_play4">
+                            <source src="assets/audio/parallel.mp3">
+                        </audio>
+                    </div>
+                    <h3>parallel</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
                 <li class="music_card">
                     <div class="img_player">
                         <img class="audio-img" src="assets/img/beat5.jpg" alt="beat5" onclick="document.getElementById('audio_play5').play(); return false;"/>
@@ -81,7 +109,129 @@
                     <h3>feverdream</h3>
                     <p class="title">$24.5 | 123 BPM</p>
                 </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat6.jpg" alt="beat6" onclick="document.getElementById('audio_play6').play(); return false;"/>
+                        <audio id="audio_play6">
+                            <source src="assets/audio/brainfog.mp3">
+                        </audio>
+                    </div>
+                    <h3>Brainfog</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat7.jpg" alt="beat7" onclick="document.getElementById('audio_play7').play(); return false;"/>
+                        <audio id="audio_play7">
+                            <source src="assets/audio/otherwordly.mp3">
+                        </audio>
+                    </div>
+                    <h3>otherworldly</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat8.jpg" alt="beat8" onclick="document.getElementById('audio_play8').play(); return false;"/>
+                        <audio id="audio_play8">
+                            <source src="assets/audio/thankful.mp3">
+                        </audio>
+                    </div>
+                    <h3>thankful</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+            </ul>
+        </div>
 
+        <!--Featured-->
+        <div class="featured">
+            <div class="slider_head">
+                <h2>Featured</h2>
+                <div class="slider-btn">
+                    <img id="left_scroll2" src="assets/img/arrow_left.png" alt="left_arrow">
+                    <img id="right_scroll2" src="assets/img/arrow_right.png" alt="right_arrow">
+                </div>
+            </div>
+            <ul class="slider_content2">
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat1.jpg" alt="beat1" onclick="document.getElementById('audio_play11').play(); return false;"/>
+                        <audio id="audio_play11">
+                            <source src="assets/audio/andromeda.mp3">
+                        </audio>
+                    </div>
+                    <h3>ANDROMEDA</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat2.jpg" alt="beat2" onclick="document.getElementById('audio_play12').play(); return false;"/>
+                        <audio id="audio_play12">
+                            <source src="assets/audio/sidekick.mp3">
+                        </audio>
+                    </div>
+                    <h3>sidekick</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat3.jpg" alt="beat3" onclick="document.getElementById('audio_play13').play(); return false;"/>
+                        <audio id="audio_play13">
+                            <source src="assets/audio/triumph.mp3">
+                        </audio>
+                    </div>
+                    <h3>Triumph</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat4.jpg" alt="beat4" onclick="document.getElementById('audio_play14').play(); return false;"/>
+                        <audio id="audio_play14">
+                            <source src="assets/audio/parallel.mp3">
+                        </audio>
+                    </div>
+                    <h3>parallel</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat5.jpg" alt="beat5" onclick="document.getElementById('audio_play15').play(); return false;"/>
+                        <audio id="audio_play15">
+                            <source src="assets/audio/feverdream.mp3">
+                        </audio>
+                    </div>
+                    <h3>feverdream</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat6.jpg" alt="beat6" onclick="document.getElementById('audio_play16').play(); return false;"/>
+                        <audio id="audio_play16">
+                            <source src="assets/audio/brainfog.mp3">
+                        </audio>
+                    </div>
+                    <h3>Brainfog</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat7.jpg" alt="beat7" onclick="document.getElementById('audio_play17').play(); return false;"/>
+                        <audio id="audio_play17">
+                            <source src="assets/audio/otherwordly.mp3">
+                        </audio>
+                    </div>
+                    <h3>otherworldly</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
+                <li class="music_card">
+                    <div class="img_player">
+                        <img class="audio-img" src="assets/img/beat8.jpg" alt="beat8" onclick="document.getElementById('audio_play18').play(); return false;"/>
+                        <audio id="audio_play18">
+                            <source src="assets/audio/thankful.mp3">
+                        </audio>
+                    </div>
+                    <h3>thankful</h3>
+                    <p class="title">$24.5 | 123 BPM</p>
+                </li>
                 <li class="music_card">
                     <div class="img_player">
                         <img class="audio-img" src="assets/img/beat9.jpg" alt="beat8" onclick="document.getElementById('audio_play19').play(); return false;"/>
@@ -100,75 +250,6 @@
                         </audio>
                     </div>
                     <h3>distant</h3>
-                    <p class="title">$24.5 | 123 BPM</p>
-                </li>
-            </ul>
-        </div>
-
-        <!--Featured-->
-        <div class="featured">
-            <div class="slider_head">
-                <h2>Screamo</h2>
-            </div>
-            <ul class="slider_content2">
-                <li class="music_card">
-                    <div class="img_player">
-                        <img class="audio-img" src="assets/img/beat1.jpg" alt="beat1" onclick="document.getElementById('audio_play11').play(); return false;"/>
-                        <audio id="audio_play11">
-                            <source src="assets/audio/andromeda.mp3">
-                        </audio>
-                    </div>
-                    <h3>ANDROMEDA</h3>
-                    <p class="title">$24.5 | 123 BPM</p>
-                </li>
-
-                <li class="music_card">
-                    <div class="img_player">
-                        <img class="audio-img" src="assets/img/beat4.jpg" alt="beat4" onclick="document.getElementById('audio_play14').play(); return false;"/>
-                        <audio id="audio_play14">
-                            <source src="assets/audio/parallel.mp3">
-                        </audio>
-                    </div>
-                    <h3>parallel</h3>
-                    <p class="title">$24.5 | 123 BPM</p>
-                </li>
-
-                <li class="music_card">
-                    <div class="img_player">
-                        <img class="audio-img" src="assets/img/beat6.jpg" alt="beat6" onclick="document.getElementById('audio_play16').play(); return false;"/>
-                        <audio id="audio_play16">
-                            <source src="assets/audio/brainfog.mp3">
-                        </audio>
-                    </div>
-                    <h3>Brainfog</h3>
-                    <p class="title">$24.5 | 123 BPM</p>
-                </li>
-            </ul>
-        </div>
-
-        <div class="new_tracks">
-            <div class="slider_head">
-                <h2>RnB</h2>
-            </div>
-            <ul class="slider_content">
-                <li class="music_card">
-                    <div class="img_player">
-                        <img class="audio-img" src="assets/img/beat7.jpg" alt="beat7" onclick="document.getElementById('audio_play7').play(); return false;"/>
-                        <audio id="audio_play7">
-                            <source src="assets/audio/otherwordly.mp3">
-                        </audio>
-                    </div>
-                    <h3>otherworldly</h3>
-                    <p class="title">$24.5 | 123 BPM</p>
-                </li>
-                <li class="music_card">
-                    <div class="img_player">
-                        <img class="audio-img" src="assets/img/beat8.jpg" alt="beat8" onclick="document.getElementById('audio_play18').play(); return false;"/>
-                        <audio id="audio_play18">
-                            <source src="assets/audio/thankful.mp3">
-                        </audio>
-                    </div>
-                    <h3>thankful</h3>
                     <p class="title">$24.5 | 123 BPM</p>
                 </li>
             </ul>
@@ -213,6 +294,6 @@
 
     </footer>
     <!--script-->
-    <script src="script/tracks.js"></script>
+    <script src="script/scrolls.js"></script>
 </body>
 </html>

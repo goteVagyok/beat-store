@@ -1,9 +1,11 @@
 to-do:
-Login:Forgot password -> linket adni neki a contact-re minden html/php oldalon
-Minden oldalon -> Register oldal törlése, kivétele a navbar-ból + Login pulzálása css-ben
+?Login:Forgot password -> linket adni neki a contact-re minden html/php oldalon
+Minden oldalon -> Register oldal törlése, kivétele a navbar-ból
 login.php -> login-register.php átírás minden oldalon
-footer -> About us helyére licensing.html, Merch, Pricing helyére mást, vagy törölni
-sell your music oldal -> csak bejelentkezés után lehessen látni
+footer -> About us helyére licensing.html, Merch, Pricing helyére mást, vagy törölni, login.html útvonalat átírni a login-register.php-ra
+
+Log out -> minden bejelentkezés utáni oldalra
+az összes alap oldalnál -> ha be van jelentkezve: profil kép, ha nincs: Login 
 
 
 MySQL adatbázist létrehozó scriptek:

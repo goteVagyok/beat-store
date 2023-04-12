@@ -1,3 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-color: #2b2a2a;
+}
+/*---------------header-----------------*/
+header{
+    top: 0;
+    background-color: black;
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    /*justify-content: space-between; /*középre tolja a menüsort*/
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    float: right;
+}
+.header_menu{
+    margin-right: 25px;
+}
+.header .active{
+    color: red;
+    transition: all .30s ease;
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px 25px;
+    margin: 0 10px;
+}
+nav ul li a{
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+nav ul li a:hover{
+    color: red;
+    transition: all .30s ease; /*0.30mp alatt színezi be az összes elemet, amire rávisszük az egeret*/
+}
+
+/*-----hamburger_menu-----*/
+.menu_icon{
+    width: 46px;
+    left: 0;
+    margin: 15px 0;
+}
+.xmenu_icon:nth-child(2){
+    width: 30px;
+    left: 0;
+    margin: 20px 0 10px 0;
+}
+label #btn,
+label #cancel{
+    float: right;
+    line-height: 50px;
+    margin-right: 20px;
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+/*-----logo-----*/
+.logo{
+    color: red;
+    font-size: 50px;
+    text-decoration: none;
+    position: absolute;
+    top: 5px;
+    left: 5%;
+}
+.logo:hover{
+    transition: all 0.2s ease;
+    transform: scale(1.05);
+    /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+    animation: changeLogo 0.8s linear  infinite alternate forwards;   
+}
+@keyframes changeLogo{
+    0%{color: white;}
+}
+/*-----connection-----*/
+.connection{
+    display: flex;
+    align-items: center;
+}
+.connection a{
+    margin-left: 20px;
+    margin-right: 20px;
+    border: none;
+    color: red;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .2s;
+}
+.connection a:hover{
+    transform: scale(1.06);
+    cursor: pointer;
+    color: white;
+}
+/*-----responsivity-----*/
+@media (max-width: 1300px) {
+    nav ul li{
+        padding: 10px 5px;
+    }
+}
+@media (max-width: 1170px) {
+    .logo{
+        left: 6%;
+        font-size: 40px;
+        top: 15px;
+    }
+}
+@media (max-width: 1090px) {
+    nav ul{
+        margin-left: 20px;
+    }
+    nav ul li{
+        padding: 10px 5px;
+    }
+    nav ul li a{
+        font-size: 13px;
+    }
+    .connection a{
+        font-size: 15px;
+    }
+}
+@media (width <= 1028px) {
+    label #btn{
+        display: block;
+    }
+    nav{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: black;
+        top: 60px;
+        left: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        transition: all .5s;
+    }
+    nav ul li,
+    nav div{
+        display: block;
+        margin: 40px;
+        line-height: 20px;
+    }
+    /* a sing up, register egymás alatt van
+    nav div{
+        display: flex;
+        flex-direction: column;
+    }
+    */
+    nav ul li a{
+        font-size: 20px;
+    }
+    .connection a{
+        font-size: 19px;
+    }
+    #check:checked ~ nav{
+        left: 0;
+    }
+    #check:checked ~ label #btn{
+        display: none;
+    }
+    #check:checked ~ label #cancel{
+        display: block;
+    }
+}
+/*-----text_in_the_card-----*/
+.card-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.log_reg-card{
+    display: block;
+    padding-top: 200px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 550px;
+    width: 1000px;
+    background-color: rgb(178, 178, 178);
+    border: 2px solid rgba(39, 39, 39, 0.5); 
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    /*box-shadow: vízszintesen függőlegesen blur szín */
+    box-shadow: 0 0 30px rgb(0, 0, 0);
+    transition: height .4s ease;
+    overflow: hidden;
+}
+.message{
+    display: flexbox;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 100px 50px 100px;
+}
+.text{
+    font-size: 30px;
+    color: black;
+}
+/*--button--*/
+.btn{
+    width: 30%;
+    height: 70px;
+    color: red;
+    background-color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 1000;
+    transition: all 0.3s ease;
+}
+.btn:hover{
+    transform: scale(0.97);
+    animation: changeLogin 1.2s linear  infinite alternate forwards; 
+}
+
+@keyframes changeLogin{
+    0%{background-color: white;
+        color: black;}
+    70%{background-color: black;}
+}
+
+
+
+
 /*--active header--*/
 .active{
     color: red !important;

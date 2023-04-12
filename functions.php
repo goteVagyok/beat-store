@@ -1,13 +1,13 @@
 <?php
     function server_connect(){
         //aatbázis kapcsolat
-        $servername = "127.0.0.1";
+        $servername = "localhost";
         $username = "root";
         $password = "";
         $dbname = "beat-store";
 
         $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed.");
-        if(false==mysqli_select_db($conn, "beat-store")){
+        if(false==mysqli_select_db($conn, "beat-store")){//adatbázis kiválasztása
             return null;
         }
 
@@ -22,13 +22,29 @@
         if( !($conn=server_connect()) ){
             return false;
         }
-        $result=mysqli_query( $conn, "SELECT USERS.username, USERS.password, USERS.email FROM users" );
+        $result=mysqli_query( $conn, "SELECT * FROM users" );
 
         if( $result==false ){
             die(mysqli_error($conn));
         }
         mysqli_close($conn);
         return $result;
+    }
+
+    function list_actual_users($username){
+        if( !($conn=server_connect()) ){
+            return false;
+        }
+        $stmt=mysqli_prepare( $conn, "SELECT USERS.id, USERS.username, USERS.password, USERS.email, USERS.profile_picture FROM users WHERE username=?" );
+
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        $success=mysqli_stmt_execute($stmt);
+
+        if( $success==false ){
+            die(mysqli_error($conn));
+        }
+        mysqli_close($conn);
+        return $success;
     }
 
     function list_allmusics(){

@@ -123,6 +123,7 @@
             }
             */
 /////////////////////////////////////////////////////////////////////////////////
+    session_start();
     include "functions.php";
     $result=list_users();
     $users=array();
@@ -132,7 +133,6 @@
     }
 
     $errors=[];
-    $message="";
 
     if( isset($_POST["register"]) ){
 
@@ -227,6 +227,7 @@
             $password=$_POST["password"];
             $hashed_password=password_hash($password, PASSWORD_DEFAULT);
 
+
             //ha nincs error
             if(empty($errors)){
 
@@ -234,7 +235,7 @@
                     if($user["username"]===$username){
                         if(password_verify($password, $user["password"])){
 
-                            session_start();
+                            $_SESSION["user"]=$user;
                             header("Location: profile.php");
                         }else{
                             $message="Invalid password!";
@@ -326,13 +327,13 @@
             <img src="assets/img/menu2.png" alt="menu" id="btn" class="menu_icon">
             <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
         </label>
-        <a href="beat.html" class="logo">BEAT STORE</a>
+        <a href="beat.php" class="logo">BEAT STORE</a>
         <nav class="navbar">
             <ul class="header_menu">
-                <li><a href="tracks.html" class="menus">Tracks</a></li>
-                <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
-                <li><a href="contact.html" class="menus">Contact</a></li>
+                <li><a href="tracks.php" class="menus">Tracks</a></li>
+                <li><a href="licensing.php" class="menus">Licensing</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
+                <li><a href="contact.php" class="menus">Contact</a></li>
             </ul>
             <div class="connection">
                 <a href="login-register.php" class="active">Login</a>
@@ -366,8 +367,8 @@
                         <p>Register if you don't have an account <a href="#" class="register-link">Register</a></p>
                     </div>
                 </form>
-                <?php echo $message . "<br/>"; 
-                    print_r($_POST);
+                <?php 
+                    //echo var_dump($_POST);
                     if (isset($success) && $success === TRUE) {  // ha nem volt hiba, akkor a regisztráció sikeres
                         echo "<p>Successfully registration!</p>";
                     } else {                                // az esetleges hibákat kiírjuk egy-egy bekezdésben
