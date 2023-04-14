@@ -8,10 +8,18 @@
     $user_name=$_SESSION["user"]["username"];
     $user_email=$_SESSION["user"]["email"];
     //alap prof.lép
-    //$user_picture="assets\img\profile_picture.png";
-    $user_picture=$_SESSION["user"]["profile_picture"];
+    $user_picture=$_SESSION["user_pic"];
 
 
+    $user_musics=list_mymusic($user_id);
+    $user_musics_id=$user_musics["music_id"];
+
+    
+    $target_music="assets/audio/"."*-".$user_id."-*";    //zenék, amik az adott user id-hoz tartoznak
+    //$target_cover="assets/uploads".$;
+
+
+    
     
     
 

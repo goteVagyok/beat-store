@@ -7,14 +7,11 @@
 
     include "functions.php";
 
-    
+
     //aktuális felhasználó adatai
     $user_name=$_SESSION["user"]["username"];
     $user_email=$_SESSION["user"]["email"];
-    //alap prof.lép
-    //$user_picture="assets\img\profile_picture.png";
-    $user_picture=$_SESSION["user"]["profile_picture"];
-    
+    $user_picture=$_SESSION["user_pic"];
 
 
 ?>
@@ -91,9 +88,13 @@
                         <h2>Profile picture's path</h2>
                         <li><?php echo "$user_picture" ?></li>
                     </ul>
+                    <ul>
+                        <h2>Logout</h2>
+                        <li><form action="logout.php"><input name="submit" class="btn" type="submit" value="Logout"></form></li>
+                    </ul>
                 </ul>
             </div>
-            <img class="waves-picture" src="assets\img\waves.png" alt="waves_picture">
+            <img class="waves-picture" src="assets/img/waves.png" alt="waves_picture">
         </div>
     </main>
 

@@ -26,6 +26,7 @@ nav{
 }
 nav div .profile-picture{
     width: 50px;
+    height: 50px;
 }
 .header_menu{
     margin-right: 25px;
@@ -183,6 +184,7 @@ label #cancel{
     /*--profile picture--*/
     .container .profile-menu .profile-picture{
         width: 110px;
+        width: 110px;
         padding: 0 10px;
     }
     .container .profile-menu{
@@ -230,6 +232,7 @@ a:hover{
 .container .profile-menu div img{
     display: block;
     width: 300px;
+    height: 300px;
     justify-content: center;
     align-items: center;
     padding: 0 30px;

@@ -1,6 +1,8 @@
 <?php
   session_start();
-  $user_picture=$_SESSION["user"]["profile_picture"];
+  if(isset($_SESSION["loggedin"])){
+      $user_picture=$_SESSION["user_pic"];
+  }
 
 ?>
 <!DOCTYPE html>
@@ -98,7 +100,7 @@
                 <ul>
                     <li><a href="#">Pricing</a></li>
                     <li><a href="register.html">Register</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="login-register.php">Login</a></li>
                     <li><a href="contact.html">Contact us</a></li>
                 </ul>
             </div>

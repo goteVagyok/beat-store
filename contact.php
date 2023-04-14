@@ -1,6 +1,6 @@
 <?php
   session_start();
-  $user_picture=$_SESSION["user"]["profile_picture"];
+  $user_picture=$_SESSION["user_pic"];
 
 ?>
 <!DOCTYPE html>

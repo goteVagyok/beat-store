@@ -53,6 +53,11 @@ nav ul li a:hover{
     color: red;
     transition: all .30s ease; /*0.30mp alatt színezi be az összes elemet, amire rávisszük az egeret*/
 }
+/*---prof-kép---*/
+nav div .profile-picture{
+    width: 50px;
+    height: 50px;
+}
 
 /*-----hamburger_menu-----*/
 .menu_icon{

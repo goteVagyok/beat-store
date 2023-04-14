@@ -1,6 +1,8 @@
 <?php
   session_start();
-  $user_picture=$_SESSION["user"]["profile_picture"];
+  if(isset($_SESSION["loggedin"])){
+    $user_picture=$_SESSION["user_pic"];
+}
 
 ?>
 <!DOCTYPE html>

@@ -5,11 +5,9 @@
     $picture_errors=[];
     $password_errors=[];
 
-
-    //alap prof.lép
-    $user_picture="assets\profilepictures\profile_picture.png";
-    $user_picture=$_SESSION["user"]["profile_picture"];
+    $user_picture=$_SESSION["user_pic"];
     $user_id=$_SESSION["user"]["id"];
+    $user_name=$_SESSION["user"]["username"];
 
     if( isset($_POST["picture"]) ){
 
@@ -17,12 +15,12 @@
             $picture_errors[]="Choose a picture";
         }
 
-        $file=$_FILES["file"];
+        //$file=$_FILES["file"];
         $fileName = $_FILES["file"]["name"];
         $fileTmpName = $_FILES["file"]["tmp_name"];//a kép elérési útvonala + az ideiglenes neve
         $fileSize = $_FILES["file"]["size"];
         $fileError = $_FILES["file"]["error"];
-        $fileType = $_FILES["file"]["type"];
+        //$fileType = $_FILES["file"]["type"];
 
 
         $filePart=explode('.',$fileName);//a file nevének tagolása .-tal
@@ -35,10 +33,11 @@
             if(count($picture_errors)===0 && $fileError===0){
                 if($fileSize<31457280){     //30MB = 31457280 byte
                     //$newFileName=uniqid('',true).".".$fileActualExt;//uniqid()=egy véletlenszerű, egyedi string azonosító, kb 23 karakter hosszú
-                    $user_picture="assets/profilepictures/".$fileName;
-                    move_uploaded_file($fileTmpName, $user_picture);//áthelyezés a $user_picture változóba
 
-                    change_picture($fileTmpName, $user_name);
+                    $user_picture="assets/uploads/".$user_name.".".$fileActualExt;
+                    move_uploaded_file($fileTmpName, $user_picture);//áthelyezés a $user_picture változóba
+                    $_SESSION["user_pic"]=$user_picture;
+
                     $success=true;
                     $_POST=array();//$_POST ürítése
                     header("Location: profile.php");

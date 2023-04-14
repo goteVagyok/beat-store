@@ -26,6 +26,7 @@ nav{
 }
 nav div .profile-picture{
     width: 50px;
+    height: 50px;
 }
 .header_menu{
     margin-right: 25px;
@@ -179,8 +180,9 @@ label #cancel{
         display: block;
     }
     /*--profile picture--*/
-    .container .profile-menu .profile-picture{
+    .profile-menu .profile-picture{
         width: 110px;
+        height: 110px;
         padding: 0 10px;
     }
     .container .profile-menu{
@@ -221,6 +223,7 @@ a:hover{
 }
 .container .profile-menu div img{
     width: 300px;
+    height: 300px;
     justify-content: center;
     align-items: center;
     padding: 0 30px;
@@ -255,6 +258,7 @@ a:hover{
 }
 .profile-data .datas .profile-picture{
     width: 80px;
+    height: 80px;
     padding: 5px;
     border: 3px solid black;
     
