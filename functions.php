@@ -79,36 +79,13 @@
     }
 
 
-    function get_music_by($username): array {
-        //visszaadja az adott nevu user osszes zenejet (csak a fajlok nevet pl. "track.mp3")
-
-        $dirs = scandir("assets/uploads/".$username);
-        //bescanneli az osszes filet a user mappajaban
-        $beats = array();
-
-        foreach ($dirs as $dir) {
-            foreach ($dir as $file) {
-                if (pathinfo($file)['extension'] === "mp3") {
-                    //kivalogatja es eltarolja az mp3-akat
-                    $beat = "assets/uploads/".$username."/".$file;
-                } else {
-                    $cover = "assets/uploads/".$username."/".$file;
-                }
-            }
-            if ($beat != "" && $cover != "") {
-                array_push($beats, $beat, $cover);
-            }
-        }
-        return $beats;
-    }
-
     function get_n_of_uploads_by($username): int {
         //megmondja hany mappa van a felhasznalo mappajaban (hany tracket toltott fel)
         $dirs = scandir("assets/uploads/".$username."/");
         return count($dirs);
     }
 
-    function get_cover_of($username, $track_id): string {
+    function get_cover_pic($username, $track_id): string {
         $beat_folder = "assets/uploads/".$username."/".$track_id."/";
         //pl.: assets/uploads/username/0/
 
@@ -123,6 +100,23 @@
         //ha nem talaltunk a mappaban kepet akkor a defaultot adjuk vissza
         return "assets/uploads/cover.png";
     }
+    function get_beat($username, $track_id): string|null {
+        $beat_folder = "assets/uploads/".$username."/".$track_id."/";
+        //pl.: assets/uploads/username/0/
+
+        $allowed=array('mp3');
+
+        foreach (scandir($beat_folder) as $file) {
+            if (in_array(pathinfo($file)['extension'], $allowed)) {
+                //ha talalunk a mappaban zenet akkor az a beat es returnoljuk egybol
+                return $beat_folder.$file;
+            }
+        }
+        //ha nem talaltunk a mappaban zenet akkor kurva nagy baj van xd
+        return null;
+}
+
+
 
     function set_user($username, $password, $email): bool
     {
@@ -169,7 +163,8 @@
         return $success;
     }
 
-    function get_user_pic($username){
+    function get_user_pic($username): string|null
+    {
         //felhaszn.név alapján megkeresi a felhasználó prof. képét, ha nincs null-t ad vissza
         $extensions=array('png','jpg','jpeg');
         $directory="assets/uploads/";
@@ -182,23 +177,6 @@
                 return $path;
             }
 
-        }
-        //amúgy meg null-t ad
-        return null;
-    }
-
-    function get_cover_pics($music_id, $user_id){
-        //a két id alapján megkeresi van-e neki borító képe az adott zenéhez, ha nincs null-t ad vissza
-        $extensions=array('png','jpg','jpeg');
-        $directory="assets/uploads/";
-
-        foreach($extensions as $extension){
-            $file=$music_id."-".$user_id.".".$extension;
-            $path=$directory.$file;
-            //ha talál olyan file-t a mappában, akkor azt visszaadja
-            if(file_exists($path)){
-                return $path;
-            }
         }
         //amúgy meg null-t ad
         return null;

@@ -42,7 +42,7 @@ if (isset($_SESSION['loggedin'])) {
                 if($fileError===0){
                     if($fileSize<31457280){
 
-                        $track_id = get_n_of_uploads_by($username."/") - 2; // valamiert 2-t ad vissza 0 helyett xdd
+                        $track_id = get_n_of_uploads_by($username."/") - 1; // valamiert 2-t ad vissza 0 helyett xdd
                         $dir_for_new_beat = "assets/uploads/".$username."/".$track_id;
                         //megcsinaljuk a mappat az adott beatnek es covernek (ha van)
                         if (!file_exists($dir_for_new_beat)) {
@@ -63,7 +63,7 @@ if (isset($_SESSION['loggedin'])) {
                         $mymusic_id=$mymusics["music_id"];
                         
                         //áttesszük az audio mappába magát a zenét
-                        $uploads="assets/uploads/".$username."/".$track_id."/".$artist." - ".$title; //username - beat_title
+                        $uploads="assets/uploads/".$username."/".$track_id."/".$artist." - ".$title.".".$file_type; //username - beat_title
                         move_uploaded_file($beat_path, $uploads);
 
                         $upload_success=true;

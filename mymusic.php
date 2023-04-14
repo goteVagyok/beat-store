@@ -10,21 +10,25 @@
     //alap prof.lép
     $user_picture=$_SESSION["user_pic"];
 
-
     $user_musics=list_mymusic($user_id);
     $user_musics_id=$user_musics["music_id"];
+    $cover = get_cover_pic($user_name, 1);
+    $beat = get_beat($user_name, 1);
 
 
+function tmp() {
+    $user_name=$_SESSION["user"]["username"];
 
-    $beats = get_music_by($user_name);
+    for ($i = 1; $i < count(scandir("assets/uploads/".$user_name."/")); $i++) {
+            $cover = get_cover_pic($user_name, $i);
+            $beat = get_beat($user_name, $i);
+            //TODO !!!!!
+            echo "na itt kene valahogy kiechozni a kepet meg a zenet a htmlbe de nemtudom hogyan";
+        }
 
-    //$target_music="assets/audio/"."*-".$user_id."-*";    //zenék, amik az adott user id-hoz tartoznak
-    //$target_cover="assets/uploads".$;
+    }
 
 
-    
-    
-    
 
 
 ?>
@@ -48,8 +52,8 @@
 </head>
 <!--valamiért css-ben nem működik a background-->
 <body>
-    <!-----navbar&logo----->
-    <!--
+    <!--navbar&logo-->
+
     <header class="header">
         <input type="checkbox" id="check">
         <label for="check">
@@ -69,10 +73,10 @@
             </div>
         </nav>
     </header>
-    -->
+
     
     <main class="main_body">
-        <!-----Profile----->
+        <!--Profile-->
         <div class="container">
             <!--menü-->
             <div class="profile-menu">
@@ -110,72 +114,12 @@
                     </li>
                     <li class="music_card">
                         <div class="img_player">
-                            <img class="audio-img" src="assets/img/beat2.jpg" alt="beat2" onclick="document.getElementById('audio_play2').play(); return false;"/>
-                            <audio id="audio_play2">
-                                <source src="assets/audio/sidekick.mp3">
+                            <img class="audio-img" src="<?php echo $cover ?>" alt="beat1" onclick="document.getElementById('audio_play0').play(); return false;"/>
+                            <audio id="audio_play0">
+                                <source src="<?php echo $beat ?>">
                             </audio>
                         </div>
-                        <h3>sidekick</h3>
-                        <p class="title">$24.5 | 123 BPM</p>
-                    </li>
-                    <li class="music_card">
-                        <div class="img_player">
-                            <img class="audio-img" src="assets/img/beat3.jpg" alt="beat3" onclick="document.getElementById('audio_play3').play(); return false;"/>
-                            <audio id="audio_play3">
-                                <source src="assets/audio/triumph.mp3">
-                            </audio>
-                        </div>
-                        <h3>Triumph</h3>
-                        <p class="title">$24.5 | 123 BPM</p>
-                    </li>
-                    <li class="music_card">
-                        <div class="img_player">
-                            <img class="audio-img" src="assets/img/beat4.jpg" alt="beat4" onclick="document.getElementById('audio_play4').play(); return false;"/>
-                            <audio id="audio_play4">
-                                <source src="assets/audio/parallel.mp3">
-                            </audio>
-                        </div>
-                        <h3>parallel</h3>
-                        <p class="title">$24.5 | 123 BPM</p>
-                    </li>
-                    <li class="music_card">
-                        <div class="img_player">
-                            <img class="audio-img" src="assets/img/beat5.jpg" alt="beat5" onclick="document.getElementById('audio_play5').play(); return false;"/>
-                            <audio id="audio_play5">
-                                <source src="assets/audio/feverdream.mp3">
-                            </audio>
-                        </div>
-                        <h3>feverdream</h3>
-                        <p class="title">$24.5 | 123 BPM</p>
-                    </li>
-                    <li class="music_card">
-                        <div class="img_player">
-                            <img class="audio-img" src="assets/img/beat6.jpg" alt="beat6" onclick="document.getElementById('audio_play6').play(); return false;"/>
-                            <audio id="audio_play6">
-                                <source src="assets/audio/brainfog.mp3">
-                            </audio>
-                        </div>
-                        <h3>Brainfog</h3>
-                        <p class="title">$24.5 | 123 BPM</p>
-                    </li>
-                    <li class="music_card">
-                        <div class="img_player">
-                            <img class="audio-img" src="assets/img/beat7.jpg" alt="beat7" onclick="document.getElementById('audio_play7').play(); return false;"/>
-                            <audio id="audio_play7">
-                                <source src="assets/audio/otherwordly.mp3">
-                            </audio>
-                        </div>
-                        <h3>otherworldly</h3>
-                        <p class="title">$24.5 | 123 BPM</p>
-                    </li>
-                    <li class="music_card">
-                        <div class="img_player">
-                            <img class="audio-img" src="assets/img/beat8.jpg" alt="beat8" onclick="document.getElementById('audio_play8').play(); return false;"/>
-                            <audio id="audio_play8">
-                                <source src="assets/audio/thankful.mp3">
-                            </audio>
-                        </div>
-                        <h3>thankful</h3>
+                        <h3><?php echo "title goes here" ?></h3>
                         <p class="title">$24.5 | 123 BPM</p>
                     </li>
                 </ul>
@@ -184,7 +128,7 @@
         </div>
     </main>
 
-        <!-----footer----->
+        <!--footer-->
     <footer class="footer">
         <div class="footer_container">
             <div class="footer_row">
@@ -199,8 +143,8 @@
                     <h4>Support</h4>
                     <ul>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="register.php">Register</a></li>
-                        <li><a href="login.php">Login</a></li>
+                        <li><a href="login-register.php">Register</a></li>
+                        <li><a href="login-register.php">Login</a></li>
                         <li><a href="contact.php">Contact us</a></li>
                     </ul>
                 </div>
