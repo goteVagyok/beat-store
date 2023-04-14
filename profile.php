@@ -35,7 +35,7 @@
 </head>
 <!--valamiért css-ben nem működik a background-->
 <body>
-    <!-----navbar&logo----->
+    <!--navbar&logo-->
     <header class="header">
         <input type="checkbox" id="check">
         <label for="check">
@@ -57,7 +57,7 @@
     </header>
     
     <main class="main_body">
-        <!-----Profile----->
+        <!--Profile-->
         <div class="container">
             <!--menü-->
             <div class="profile-menu">
@@ -98,7 +98,7 @@
         </div>
     </main>
 
-        <!-----footer----->
+        <!--footer-->
     <footer class="footer">
         <div class="footer_container">
             <div class="footer_row">
@@ -113,7 +113,7 @@
                     <h4>Support</h4>
                     <ul>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="register.php">Register</a></li>
+                        <li><a href="login-register.php">Register</a></li>
                         <li><a href="login-register.php">Login</a></li>
                         <li><a href="contact.php">Contact us</a></li>
                     </ul>

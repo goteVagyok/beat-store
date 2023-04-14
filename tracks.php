@@ -23,7 +23,7 @@
 
 </head>
 <body>
-<!-----navbar&logo----->
+<!--navbar&logo-->
 <header class="header">
     <input type="checkbox" id="check">
     <label for="check">
@@ -45,7 +45,7 @@
 </header>
 
 <main class="main_body">
-    <!------new_tracks------>
+    <!--new_tracks-->
     <div class="new_tracks">
         <h1>
             Generes
@@ -181,7 +181,7 @@
     </div>
 </main>
 
-<!-----footer----->
+<!--footer-->
 <footer class="footer">
     <div class="footer_container">
         <div class="footer_row">

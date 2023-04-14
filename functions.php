@@ -7,7 +7,7 @@
         $dbname = "beat-store";
 
         $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed.");
-        if(false==mysqli_select_db($conn, "beat-store")){//adatbázis kiválasztása
+        if(!mysqli_select_db($conn, "beat-store")){//adatbázis kiválasztása
 
             return null;
         }

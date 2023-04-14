@@ -1,4 +1,4 @@
-<!----php-login/register---->
+<!--php-login/register-->
 <?php
     session_start();
     include "functions.php";
@@ -114,7 +114,7 @@
                             if(get_user_pic($username)!==null){
                                 $_SESSION["user_pic"]=get_user_pic($username);
                             }else{
-                                $_SESSION["user_pic"]="assets\uploads\profile_picture.png";
+                                $_SESSION["user_pic"]="assets/uploads/profile_picture.png";
                             }
 
                             header("Location: profile.php");
@@ -222,7 +222,7 @@
                         <input id="email" name="email" type="email" required><label for="email"> Email</label>
                     </div>
                     <div class="input-box">
-                        <input id="password2" name="password2" type="password" required><label for="password2"> Password</label>
+                        <input id="password1" name="password2" type="password" required><label for="password2"> Password</label>
                     </div>
                     <div class="input-box">
                         <input id="password2" name="password2_confirm" type="password" required><label for="password2"> Confirm password</label>

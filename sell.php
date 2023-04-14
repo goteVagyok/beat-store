@@ -164,6 +164,7 @@ if (isset($_SESSION['loggedin'])) {
                 <a href="login-register.php">Login</a>
             </div>
         <?php } ?>
+    </nav>
 </header>
 
 <?php if (isset($_SESSION["loggedin"])) { ?>

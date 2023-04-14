@@ -1,6 +1,6 @@
 <?php
   session_start();
-  $user_picture=$_SESSION["user_pic"];
+$user_picture = $_SESSION["user_pic"] ?? "assets/uploads/profile_picture.png";
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 </head>
 <!--valamiért css-ben nem működik a background-->
 <body>
-    <!-----navbar&logo----->
+    <!--navbar&logo-->
     <header class="header">
         <input type="checkbox" id="check">
         <label for="check">
@@ -48,7 +48,7 @@
         </nav>
     </header>
     
-    <!-----Contact----->
+    <!--Contact-->
     <div class="card-holder">
         <div class="log_reg-card">
             <div class="form-box contact-info">
