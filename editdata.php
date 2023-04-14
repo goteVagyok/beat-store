@@ -193,7 +193,7 @@
                     </div>
                 </div>
             </div>
-            <img class="waves-picture" src="assets\img\waves.png" alt="waves_picture">
+            <img class="waves-picture" src="assets/img/waves.png" alt="waves_picture">
         </div>
     </main>
 

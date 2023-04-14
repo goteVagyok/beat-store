@@ -14,8 +14,11 @@
     $user_musics=list_mymusic($user_id);
     $user_musics_id=$user_musics["music_id"];
 
-    
-    $target_music="assets/audio/"."*-".$user_id."-*";    //zenék, amik az adott user id-hoz tartoznak
+
+
+    $beats = get_music_by($user_name);
+
+    //$target_music="assets/audio/"."*-".$user_id."-*";    //zenék, amik az adott user id-hoz tartoznak
     //$target_cover="assets/uploads".$;
 
 
@@ -46,6 +49,7 @@
 <!--valamiért css-ben nem működik a background-->
 <body>
     <!-----navbar&logo----->
+    <!--
     <header class="header">
         <input type="checkbox" id="check">
         <label for="check">
@@ -65,6 +69,7 @@
             </div>
         </nav>
     </header>
+    -->
     
     <main class="main_body">
         <!-----Profile----->

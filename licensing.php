@@ -99,9 +99,9 @@
                 <h4>Support</h4>
                 <ul>
                     <li><a href="#">Pricing</a></li>
-                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login-register.php">Register</a></li>
                     <li><a href="login-register.php">Login</a></li>
-                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="contact.php">Contact us</a></li>
                 </ul>
             </div>
             <div class="footer-col">

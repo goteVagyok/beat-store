@@ -1,11 +1,12 @@
 <?php
 
+    include "functions.php";
   session_start();
-  $user_picture=$_SESSION["user_pic"];
-
+    $user_picture="assets/uploads/profile_picture.png";
 
 if (isset($_SESSION['loggedin'])) {
     // ha be van jelentkezve a felhasznalo  --> ha nincs, akkor máshogy néz ki az oldal amúgy is, nem kell else ág
+    $user_picture=$_SESSION["user_pic"];
 
     $user_id = $_SESSION["user"]["id"];
     $username = $_SESSION["user"]["username"];
@@ -15,10 +16,15 @@ if (isset($_SESSION['loggedin'])) {
 
 
     if(isset($_POST["submit"])) {
+        //ha meg nem letezik akkor csinalunk neki egy sajat mappat amibe mennek majd a feltoltesei
+        if (!file_exists("assets/uploads/".$username)) {
+            mkdir("assets/uploads/".$username);
+        }
 
         if(!isset($_FILES["beat"])){
             $errors[]="Upload your beat!";
         }else{
+
 
             $beat_path= $_FILES["beat"]["tmp_name"];
 
@@ -36,6 +42,13 @@ if (isset($_SESSION['loggedin'])) {
                 if($fileError===0){
                     if($fileSize<31457280){
 
+                        $track_id = get_n_of_uploads_by($username."/") - 2; // valamiert 2-t ad vissza 0 helyett xdd
+                        $dir_for_new_beat = "assets/uploads/".$username."/".$track_id;
+                        //megcsinaljuk a mappat az adott beatnek es covernek (ha van)
+                        if (!file_exists($dir_for_new_beat)) {
+                            mkdir($dir_for_new_beat);
+                        }
+
                         //ADATOK ELTÁROLÁSA
                         $title= $_POST["title"];
                         $artist= $_POST["artist"];
@@ -50,7 +63,7 @@ if (isset($_SESSION['loggedin'])) {
                         $mymusic_id=$mymusics["music_id"];
                         
                         //áttesszük az audio mappába magát a zenét
-                        $uploads="assets/audio".$mymusic_id."-".$user_id."-".$fileName; //pl 5-23-andromeda.mp3, és akkor ha szétvágjuk "-" mentén tudunk szűrni id alapján
+                        $uploads="assets/uploads/".$username."/".$track_id."/".$artist." - ".$title; //username - beat_title
                         move_uploaded_file($beat_path, $uploads);
 
                         $upload_success=true;
@@ -79,17 +92,17 @@ if (isset($_SESSION['loggedin'])) {
     
             //kép feldolgozása
             if(in_array($fileActualExt, $allowed)){//ha a file str végén a megengedett típusú formátum van
-                if(count($picture_errors)===0 && $fileError===0){
+                if($fileError===0){
                     if($fileSize<31457280){     //30MB = 31457280 byte
                         //$newFileName=uniqid('',true).".".$fileActualExt;//uniqid()=egy véletlenszerű, egyedi string azonosító, kb 23 karakter hosszú
-                        
-                        $uploads="assets/uploads".$music_id."-".$user_id."-".$fileName;
+
+                        $uploads="assets/uploads/".$username."/".$track_id."/".$fileName;
                         move_uploaded_file($cover_path, $uploads);//áthelyezés a $user_picture változóba
-    
+
                         //change_picture($cover_path, $user_name);
                         $upload_success=true;
                         $_POST=array();//$_POST ürítése
-                        header("Location: profile.php");
+                        //header("Location: profile.php");
                     }else{
                         $errors[]="The file's size is too big";
                     }
@@ -127,6 +140,7 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 <body>
 <!--navbar&logo-->
+
 <header class="header">
     <input type="checkbox" id="check">
     <label for="check">
@@ -151,7 +165,6 @@ if (isset($_SESSION['loggedin'])) {
             </div>
         <?php } ?>
 </header>
-
 
 <?php if (isset($_SESSION["loggedin"])) { ?>
 <form action="sell.php" method="post" enctype="multipart/form-data">
@@ -214,9 +227,9 @@ if (isset($_SESSION['loggedin'])) {
     <div class="card-holder">
         <div class="log_reg-card">
             <div class="message">
-                <strong class="text">Please sing in or register to upload and sell your musics!</strong>
+                <strong class="text">Please sign in or register to upload and sell your music!</strong>
             </div>
-            <a href="login-register.php"><button type="submit" class="btn">I want to sell my musics!</button></a>
+            <a href="login-register.php"><button type="submit" class="btn">I want to sell my music!</button></a>
         </div>
     </div>
 <?php } ?>
@@ -238,9 +251,9 @@ if (isset($_SESSION['loggedin'])) {
                 <h4>Support</h4>
                 <ul>
                     <li><a href="#">Pricing</a></li>
-                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login-register.php">Register</a></li>
                     <li><a href="login-register.php">Login</a></li>
-                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="contact.php">Contact us</a></li>
                 </ul>
             </div>
             <div class="footer-col">

@@ -78,7 +78,54 @@
         return $array;
     }
 
-    function set_user($username, $password, $email){
+
+    function get_music_by($username): array {
+        //visszaadja az adott nevu user osszes zenejet (csak a fajlok nevet pl. "track.mp3")
+
+        $dirs = scandir("assets/uploads/".$username);
+        //bescanneli az osszes filet a user mappajaban
+        $beats = array();
+
+        foreach ($dirs as $dir) {
+            foreach ($dir as $file) {
+                if (pathinfo($file)['extension'] === "mp3") {
+                    //kivalogatja es eltarolja az mp3-akat
+                    $beat = "assets/uploads/".$username."/".$file;
+                } else {
+                    $cover = "assets/uploads/".$username."/".$file;
+                }
+            }
+            if ($beat != "" && $cover != "") {
+                array_push($beats, $beat, $cover);
+            }
+        }
+        return $beats;
+    }
+
+    function get_n_of_uploads_by($username): int {
+        //megmondja hany mappa van a felhasznalo mappajaban (hany tracket toltott fel)
+        $dirs = scandir("assets/uploads/".$username."/");
+        return count($dirs);
+    }
+
+    function get_cover_of($username, $track_id): string {
+        $beat_folder = "assets/uploads/".$username."/".$track_id."/";
+        //pl.: assets/uploads/username/0/
+
+        $allowed=array('png','jpg','jpeg');
+
+        foreach (scandir($beat_folder) as $file) {
+            if (in_array(pathinfo($file)['extension'], $allowed)) {
+                //ha talalunk a mappaban kepet akkor az a cover es returnoljuk egybol
+                return $beat_folder.$file;
+            }
+        }
+        //ha nem talaltunk a mappaban kepet akkor a defaultot adjuk vissza
+        return "assets/uploads/cover.png";
+    }
+
+    function set_user($username, $password, $email): bool
+    {
 
         if( !($conn=server_connect()) ){
             return false;
@@ -91,7 +138,8 @@
         return $success;
     }
 
-    function set_music($user_id, $title, $artist, $price, $bpm, $music_key){
+    function set_music($user_id, $title, $artist, $price, $bpm, $music_key): bool
+    {
 
         if( !($conn=server_connect()) ){
             return false;

@@ -1,7 +1,7 @@
 to-do:
 ---------------
 EZ EGYELŐRE TÁRGYTALAN: Login:Forgot password -> linket adni neki a contact-re minden html/php oldalon ---> vagy inlább legyen egy logout a profile.php-n
-footer -> About us helyére licensing.html, Merch, Pricing helyére mást, vagy törölni, login.html útvonalat átírni a login-register.php-ra
+footer -> About us helyére licensing.php, Merch, Pricing helyére mást, vagy törölni, login.html útvonalat átírni a login-register.php-ra
 
 adatbázisban és a lekérdezésekben -> a music tábla key oszlopa music_key lett!
 
