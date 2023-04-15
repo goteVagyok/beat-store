@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(isset($_SESSION["loggedin"])){
+    $user_picture=$_SESSION["user_pic"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -11,7 +18,7 @@
     <title>BEAT STORE</title>
 
     <!--css-->
-    <link rel="stylesheet" href="style/tracks.css">
+    <link rel="stylesheet" href="style/beat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
 </head>
@@ -23,18 +30,23 @@
             <img src="assets/img/menu2.png" alt="menu" id="btn" class="menu_icon">
             <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
         </label>
-        <a href="beat.html" class="logo">BEAT STORE</a>
+        <a href="beat.php" class="logo">BEAT STORE</a>
         <nav class="navbar">
             <ul class="header_menu">
-                <li><a href="tracks.html" class="menus active">Tracks</a></li>
-                <li><a href="licensing.html" class="menus">Licensing</a></li>
-                <li><a href="sell.html" class="menus">Sell your music</a></li>
-                <li><a href="contact.html" class="menus">Contact</a></li>
+                <li><a href="tracks.php" class="menus">Tracks</a></li>
+                <li><a href="licensing.php" class="menus">Licensing</a></li>
+                <li><a href="sell.php" class="menus">Sell your music</a></li>
+                <li><a href="contact.php" class="menus">Contact</a></li>
             </ul>
-            <div class="connection">
-                <a href="login.html">Login</a>
-                <a href="register.html">Register</a>
-            </div>
+            <?php if (isset($_SESSION["user"])) { ?>
+                <div>
+                    <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
+                </div>
+            <?php } else { ?>
+                <div class="connection">
+                    <a href="login-register.php">Login</a>
+                </div>
+            <?php } ?>
         </nav>
     </header>
 
@@ -130,7 +142,7 @@
                     <p class="title">$24.5 | 123 BPM</p>
                 </li>
             </ul>
-        </div>
+        </div> 
 
         <!--Featured-->
         <div class="featured">
@@ -243,6 +255,80 @@
                     <p class="title">$24.5 | 123 BPM</p>
                 </li>
             </ul>
+        </div> 
+
+
+        <!--Artists-->
+        <div class="artists">
+            <div class="slider_head">
+                <h2>Artists</h2>
+                <div class="slider-btn">
+                    <img id="left_scroll3" src="assets/img/arrow_left.png" alt="left_arrow">
+                    <img id="right_scroll3" src="assets/img/arrow_right.png" alt="right_arrow">
+                </div>
+            </div>
+            <ul class="slider_content3">
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist1.jpg" alt="artist1"/>
+                    </div>
+                    <h3>J.J.</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist2.jpg" alt="artist2"/>
+                    </div>
+                    <h3>Ben D. Ova</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist3.jpg" alt="artist3"/>
+                    </div>
+                    <h3>maddow</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist4.jpg" alt="artist4"/>
+                    </div>
+                    <h3>Etelka</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist5.jpg" alt="artist5"/>
+                    </div>
+                    <h3>dexter</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist6.jpg" alt="artist6"/>
+                    </div>
+                    <h3>yuri</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist7.jpg" alt="artist7"/>
+                    </div>
+                    <h3>Nemet Tube Jel</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist8.jpg" alt="artist8"/>
+                    </div>
+                    <h3>Fois Pan Peter</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist9.jpg" alt="artist1"/>
+                    </div>
+                    <h3>boksz</h3>
+                </li>
+                <li class="artist_card">
+                    <div class="img_player">
+                        <img class="artist-img" src="assets/img/artist10.jpg" alt="artist1"/>
+                    </div>
+                    <h3>cicamicaaa *.*</h3>
+                </li>
+            </ul>
         </div>
     </main>
     
@@ -261,9 +347,9 @@
                     <h4>Support</h4>
                     <ul>
                         <li><a href="#">Pricing</a></li>
-                        <li><a href="register.html">Register</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
+                        <li><a href="register.php">Register</a></li>
+                        <li><a href="login.php">Login</a></li>
+                        <li><a href="contact.php">Contact us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -284,6 +370,6 @@
 
     </footer>
     <!--script-->
-    <script src="script/tracks.js"></script>
+    <script src="script/scrolls.js"></script>
 </body>
 </html>

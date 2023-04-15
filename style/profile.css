@@ -2,13 +2,12 @@
 *{
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 body{
     line-height: 1.5;
     font-family: 'Poppins', sans-serif;
 }
-/*---------------header-----------------*/
+/*---------------header-----------------*/ /*még nem reszponzív*/
 header{
     background-color: black;
     z-index: 1000;
@@ -25,10 +24,13 @@ nav{
     padding-right: 5%;
     float: right;
 }
+nav div .profile-picture{
+    width: 50px;
+    height: 50px;
+}
 .header_menu{
     margin-right: 25px;
 }
-
 nav ul li{
     list-style: none;
     display: inline-block;
@@ -46,12 +48,9 @@ nav ul li a:hover{
     color: red;
     transition: all .30s ease; /*0.30mp alatt színezi be az összes elemet, amire rávisszük az egeret*/
 }
-/*---prof-kép---*/
-nav div .profile-picture{
-    width: 50px;
-    height: 50px;
+.active{
+    color: red !important;
 }
-
 /*-----hamburger_menu-----*/
 .menu_icon{
     width: 46px;
@@ -136,9 +135,6 @@ label #cancel{
     nav ul li a{
         font-size: 13px;
     }
-    .connection a{
-        font-size: 15px;
-    }
 }
 @media (width <= 1028px) {
     label #btn{
@@ -184,216 +180,121 @@ label #cancel{
         display: block;
     }
 }
+    @media (width <= 900px) {
+    /*--profile picture--*/
+    .container .profile-menu .profile-picture{
+        width: 110px;
+        height: 110px;
+        padding: 0 10px;
+    }
+    .container .profile-menu{
+        padding: 15px 0;
+    }
+}
 /*----------------main_body----------------*/
 .main_body{
     background-color: #2b2a2a;
     overflow: hidden;
     padding-top: 80px;
 }
-h2{
-    color: white;
-    font-weight: bold;
-    padding-top: 100px;
-    padding-bottom: 40px;
-    padding-left: 10px;
+/*-------profile menu--------*/
+a{
+    text-decoration: none;
+    color: #bbbbbb;
+    transition: all .1s ease-in;
 }
-/*----new_tracks&featured----*/
-/*
-.new_tracks_container{
-    max-width: 1500px;
-    width: 80%;     /*az egész csúszkás rész nagysága
-    padding: 30px 0;
+.profile-menu{
+    padding: 15px 10px;
 }
-/*
-.new_tracks-row{
-    display: flex;
-    flex-wrap: nowrap;     /*egy sorban maradnak az elemek
-}
-
-.new_tracks-col{
-    /*background-color: #bbbbbb;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 0px;
-    /*border: 4px solid red;
-    flex-basis: 270px;  /*a dobozok mérete
-}
-.slide_content{
-    margin: 0 30px;
-    overflow: hidden;
-}
-.beat_image{
-    position: relative;
-}
-.beat_image img{
-    object-fit: cover;
-    width: 250px;
-    height: 250px;
-}
-.beat_details,
-.beat_image{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
-}
-.beat_details h3{
-    font-weight: bold;
-    color: white;
-}
-.beat_details p{
-    color: #656464;
-    font-style: italic;
-}
-*/
-
-/*-----new_tracks&featured-----*/
-/*-----sliders-----*/
-#left_scroll,
-#right_scroll,
-#left_scroll2,
-#right_scroll2,
-#left_scroll3,
-#right_scroll3{
-    width: 60px;
-    cursor: pointer;
-    transition: all .4 linear;
-}
-#left_scroll:hover,
-#right_scroll:hover,
-#left_scroll2:hover,
-#right_scroll2:hover,
-#left_scroll3:hover,
-#right_scroll3:hover{
-    transform: scale(0.85);
-}
-/*----------*/
-.new_tracks,
-.featured,
-.artists,
-.genres_container{
-    margin: auto;
-    width: 90%;
-    height: auto;
-}
-h3{
-    font-weight: bold;
-    color: white;
+.profile-menu .datas{
+    text-align: left;
+    padding: 30px 30px;
     justify-content: center;
-}
-.title{
-    color: #656464;
-    font-style: italic;
-}
-.slider_head{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.slider_content,
-.slider_content2{
-    width: 100%;
-    margin-top: 15px;
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-}
-.slider_content::-webkit-scrollbar{
-    display: none;
-}
-.slider_content2::-webkit-scrollbar{
-    display: none;
-}
-.slider_content3::-webkit-scrollbar{
-    display: none;
-}
-.music_card{
-    width: 700px;
-    height: 270px;
-    list-style-type: none;
-    margin-right: 20px;
-    transition: .3s linear;
-}
-.music_card:hover{
-    background: rgb(61, 61, 61);
-
-}
-.img_player{
-    position: relative;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-.img_player img{
-    width: 100%;
-    height: 180px;
-}
-.img_player .artist-img{
-    border-radius: 50%;
-    width: 70%;
-    height: auto;
-}
-.artist_card h3{
-    display: flexbox;
     text-align: center;
-    padding-top: 10px;
 }
-.artist_card{
-    margin-right: 20px;
+.profile-menu .datas li{
+    padding: 30px 0 15px 0;
 }
-/*-----------------*/
-/*.artist-img{
-    position: relative;
-    border-radius: 50%;
-    transition: .3s linear;
-}*/
-.slider_content3{
-    width: 100%;
-    height: auto;
-    margin-top: 15px;
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-}
-/*.artist_card{
-    width: 100%;
-    position: relative;
-    list-style-type: none;
-    margin-right: 20px;
-}*/
-
-
-/*--------Genres-------*/
-/*
-.genres_container{
-    width: 75%;
-}
-.genres{
-    margin-top: 150px;
-    margin-bottom: 100px;
-    display: flex;
-    justify-content: center;
-    justify-content:space-around;
-}
-.genre_card{
-    margin-right: 50px;
-}
-.genres img{
-    width: 230px;
-    border-radius: 5%;
-}
-.genres img:hover{
+a:hover{
     color: red;
 }
-.genre_card h3,
-.genre_card p{
-    text-align: center;
+.container{
+    display: flex;
+    margin-bottom: 0;
 }
-*/
+.container .profile-menu div img{
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+}
+/*-------profile data-------*/
+.container .profile-data{
+    padding: 0 20px;
+    width: 70%;
+}
+.profile-data .datas{
+    padding-left: 30px;
+    padding-top: 30px;
+}
+.profile-data .datas ul{
+    padding: 20px 0;
+}
+.container .waves-picture{
+    width: 100px;
+    right: 0;
+}
+.container .datas h2{
+    color: white;
+    padding-bottom: 10px;
+}
+.container .datas li{
+    font-size: 120%;
+    color: #bbbbbb;
+}
+
+/*--ChangeBtn--*/
+.btn{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 150px;
+    height: 45px;
+    color: red;
+    background-color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+.btn:hover{
+    transform: scale(0.97);
+    animation: changeBtn 1.2s linear  infinite alternate forwards; 
+}
+
+@keyframes changeBtn{
+    0%{background-color: white;
+        color: black;}
+    70%{background-color: black;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*----------------footer----------------*/
 .footer{ 
+    height: 26vh;
     background-color: #656464;
     padding: 70px 10px;
 }

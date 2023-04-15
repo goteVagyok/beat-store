@@ -5,10 +5,10 @@ let rightScroll = document.getElementById('right_scroll');
 let sliderContent = document.getElementsByClassName('slider_content')[0];
 
 leftScroll.addEventListener('click', ()=>{
-    sliderContent.scrollLeft -= 600;
+    sliderContent.scrollLeft -= 358;
 })
 rightScroll.addEventListener('click', ()=>{
-    sliderContent.scrollLeft += 600;
+    sliderContent.scrollLeft += 358;
 })
 
 let leftScroll2 = document.getElementById('left_scroll2');
@@ -16,10 +16,10 @@ let rightScroll2 = document.getElementById('right_scroll2');
 let sliderContent2 = document.getElementsByClassName('slider_content2')[0];
 
 leftScroll2.addEventListener('click', ()=>{
-    sliderContent2.scrollLeft -= 600;
+    sliderContent2.scrollLeft -= 358;
 })
 rightScroll2.addEventListener('click', ()=>{
-    sliderContent2.scrollLeft += 600;
+    sliderContent2.scrollLeft += 358;
 })
 
 let leftScroll3 = document.getElementById('left_scroll3');
@@ -27,8 +27,8 @@ let rightScroll3 = document.getElementById('right_scroll3');
 let sliderContent3 = document.getElementsByClassName('slider_content3')[0];
 
 leftScroll3.addEventListener('click', ()=>{
-    sliderContent3.scrollLeft -= 600;
+    sliderContent3.scrollLeft -= 358;
 })
 rightScroll3.addEventListener('click', ()=>{
-    sliderContent3.scrollLeft += 600;
+    sliderContent3.scrollLeft += 358;
 })

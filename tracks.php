@@ -1,0 +1,230 @@
+<?php
+  session_start();
+  if(isset($_SESSION["loggedin"])){
+    $user_picture=$_SESSION["user_pic"];
+}
+
+?>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="authors" content="Földes Gergely, Czellár Botond">
+    <meta name="description" content="licenciába adás">
+    <meta name="keywords" content="HTML,CSS,webterv">
+    <link rel="icon" href="assets/img/icon.jpg">
+    <title>BEAT STORE</title>
+
+    <!--css-->
+    <link rel="stylesheet" href="style/tracks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+</head>
+<body>
+<!--navbar&logo-->
+<header class="header">
+    <input type="checkbox" id="check">
+    <label for="check">
+        <img src="assets/img/menu2.png" alt="menu" id="btn" class="menu_icon">
+        <img src="assets/img/xmenu.png" alt="menu" id="cancel" class="xmenu_icon">
+    </label>
+    <a href="beat.php" class="logo">BEAT STORE</a>
+    <nav class="navbar">
+        <ul class="header_menu">
+            <li><a href="tracks.php" class="menus active">Tracks</a></li>
+            <li><a href="licensing.php" class="menus">Licensing</a></li>
+            <li><a href="sell.php" class="menus">Sell your music</a></li>
+            <li><a href="contact.php" class="menus">Contact</a></li>
+        </ul>
+        <?php if (isset($_SESSION["user"])) { ?>
+            <div>
+                <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
+            </div>
+        <?php } else { ?>
+            <div class="connection">
+                <a href="login-register.php">Login</a>
+            </div>
+        <?php } ?>
+    </nav>
+</header>
+
+<main class="main_body">
+    <!--new_tracks-->
+    <div class="new_tracks">
+        <h1>
+            Generes
+        </h1>
+    </div>
+    <div class="new_tracks">
+        <div class="slider_head">
+            <h2>Hip-Hop</h2>
+        </div>
+        <ul class="slider_content">
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat2.jpg" alt="beat2" onclick="document.getElementById('audio_play2').play(); return false;"/>
+                    <audio id="audio_play2">
+                        <source src="assets/audio/sidekick.mp3">
+                    </audio>
+                </div>
+                <h3>sidekick</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat3.jpg" alt="beat3" onclick="document.getElementById('audio_play3').play(); return false;"/>
+                    <audio id="audio_play3">
+                        <source src="assets/audio/triumph.mp3">
+                    </audio>
+                </div>
+                <h3>Triumph</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat5.jpg" alt="beat5" onclick="document.getElementById('audio_play5').play(); return false;"/>
+                    <audio id="audio_play5">
+                        <source src="assets/audio/feverdream.mp3">
+                    </audio>
+                </div>
+                <h3>feverdream</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat9.jpg" alt="beat8" onclick="document.getElementById('audio_play19').play(); return false;"/>
+                    <audio id="audio_play19">
+                        <source src="assets/audio/galopp.mp3">
+                    </audio>
+                </div>
+                <h3>galopp</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat10.jpg" alt="beat8" onclick="document.getElementById('audio_play20').play(); return false;"/>
+                    <audio id="audio_play20">
+                        <source src="assets/audio/distant.mp3">
+                    </audio>
+                </div>
+                <h3>distant</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+        </ul>
+    </div>
+
+    <!--Featured-->
+    <div class="featured">
+        <div class="slider_head">
+            <h2>Screamo</h2>
+        </div>
+        <ul class="slider_content2">
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat1.jpg" alt="beat1" onclick="document.getElementById('audio_play11').play(); return false;"/>
+                    <audio id="audio_play11">
+                        <source src="assets/audio/andromeda.mp3">
+                    </audio>
+                </div>
+                <h3>ANDROMEDA</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat4.jpg" alt="beat4" onclick="document.getElementById('audio_play14').play(); return false;"/>
+                    <audio id="audio_play14">
+                        <source src="assets/audio/parallel.mp3">
+                    </audio>
+                </div>
+                <h3>parallel</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat6.jpg" alt="beat6" onclick="document.getElementById('audio_play16').play(); return false;"/>
+                    <audio id="audio_play16">
+                        <source src="assets/audio/brainfog.mp3">
+                    </audio>
+                </div>
+                <h3>Brainfog</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="new_tracks">
+        <div class="slider_head">
+            <h2>RnB</h2>
+        </div>
+        <ul class="slider_content">
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat7.jpg" alt="beat7" onclick="document.getElementById('audio_play7').play(); return false;"/>
+                    <audio id="audio_play7">
+                        <source src="assets/audio/otherwordly.mp3">
+                    </audio>
+                </div>
+                <h3>otherworldly</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+            <li class="music_card">
+                <div class="img_player">
+                    <img class="audio-img" src="assets/img/beat8.jpg" alt="beat8" onclick="document.getElementById('audio_play18').play(); return false;"/>
+                    <audio id="audio_play18">
+                        <source src="assets/audio/thankful.mp3">
+                    </audio>
+                </div>
+                <h3>thankful</h3>
+                <p class="title">$24.5 | 123 BPM</p>
+            </li>
+        </ul>
+    </div>
+</main>
+
+<!--footer-->
+<footer class="footer">
+    <div class="footer_container">
+        <div class="footer_row">
+            <div class="footer-col">
+                <h4>Beat Store</h4>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Merch</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="login-register.php">Register</a></li>
+                    <li><a href="login-register.php">Login</a></li>
+                    <li><a href="contact.php">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <div class="social">
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/unico_uniuni/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/profile.php" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="https://www.mme.hu/" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="beatStore2023">&copy; 2023 Beat Store</p>
+    </div>
+
+
+</footer>
+<!--script-->
+<script src="script/tracks.js"></script>
+</body>
+</html>

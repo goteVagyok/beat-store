@@ -53,6 +53,11 @@ nav ul li a:hover{
     color: red;
     transition: all .30s ease; /*0.30mp alatt színezi be az összes elemet, amire rávisszük az egeret*/
 }
+/*---prof-kép---*/
+nav div .profile-picture{
+    width: 50px;
+    height: 50px;
+}
 
 /*-----hamburger_menu-----*/
 .menu_icon{
@@ -186,7 +191,7 @@ label #cancel{
         display: block;
     }
 }
-/*--------Register&Sign_in---------*/
+/*--------contact---------*/
 .card-holder{
     display: flex;
     justify-content: center;
@@ -263,7 +268,7 @@ label #cancel{
     font-size: 30px;
     border-bottom: 2px solid black;
 }
-/*--login/RegisterBtn--*/
+/*--button--*/
 .btn{
     width: 100%;
     height: 45px;
