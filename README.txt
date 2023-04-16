@@ -34,3 +34,40 @@ CREATE TABLE music (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 ----------
+
+Ezek a meg nem kesz kovetelmenyek, tobbi tudtommal megvan
+
+
+
+[ ] legalabb 5 szabvanyos oldal (max 1 nem szabvanyos) (kovetelmeny!)
+
+
+[ ]  Az oldalon nincsenek hibák: nem jelennek meg warningok, notice-ok, vagy egyéb rosszul
+    beállított elemek (pl. img tag, érvénytelen képpel), minden ott lévő funkció működik (0/3 pont)
+
+[ ] Az űrlapok intuitívak, és a felhasználó számára jelezve van, hogy mi a követelmény az
+    adott input mezőre nézve (pl. a jelszó legalább 8 karakter), ezek nem az űrlap elküldése
+    után jutnak a felhasználó tudtára (0/3 pont)
+
+[ ] Sutik ertelmes hasznalata (0/3 pont)
+
+[ ] objekzumorientaltsag(0/2/4 pont)
+
+
+Regisztracio
+[ ]  Minden kötelezően kitöltendő űrlapmező kitöltése szerveroldalon is ellenőrizve van
+
+
+Login
+[ ]  A felhasználó tudja törölni a felhasználói fiókját, ilyenkor az összes adata törlődik (0/4 pont)                                                                                        pont)
+
+[ ] A felhasználó meg tudja tekinteni más felhasználók profilját / publikus adatait (pl. fel-
+    használónév, profilkép, leírás, stb.), továbbá beállítható, hogy milyen adatokat szeretnénk
+    publikusan elérhetővé tenni (0/4/8 pont)
+
+[ ]  A felhasználó tud üzenetet küldeni a többi felhasználónak (vagy néhány felhasználónak),
+    akik ezt láthatják, és válaszolni tudnak neki (0/4/8 pont)
+
+[ ]  Meg vannak valósítva különböző jogosultsági szintek (pl. felhasználó, admin). Az egyes
+    jogosultsági szinttel rendelkező felhasználók több funkciót elérnek (pl. az admin tud
+    letiltani felhasználókat, látja a rendeléseket, stb.) (0/4/8 pont)
