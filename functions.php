@@ -126,7 +126,7 @@
             }
         }
         //ha nem talaltunk a mappaban kepet akkor a defaultot adjuk vissza
-        return "assets/uploads/cover.png";
+        return "assets/uploads/cover.jpg";
     }
 
     function get_beat($username, $track_id): string|null {

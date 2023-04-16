@@ -11,7 +11,7 @@
     $user_musics=array();
     $user_musics=list_mymusic($user_id);
     //megnézzük van-e egyáltalán zenénk az adatbázisban
-    if(empty($user_musics) || $user_musics==false){
+    if(empty($user_musics) || $user_musics==false || $user_musics==null){
         //ha nincs zenénk
         $have_beats=false;
     }else{
@@ -99,17 +99,17 @@
                     </div>
                 </div>
                 <ul class="slider_content">
-                    <?php $i=1; //számláló + music_id + tömb index?>
+                    <?php //$i=1; //számláló + music_id + tömb index?>
                     <?php foreach($uploads[0] as $key => $beat) {?>
-                    <?php $actual=list_mymusic_by_music_id($i); //music id alapján az aktuális zene adatai?>
+                    <?php $actual=list_mymusic_by_music_id($key); //music id alapján az aktuális zene adatai?>
                     <?php $title=$actual["title"];?>
                     <?php $artist=$actual["artist"];?>
                     <?php $bpm=$actual["bpm"];?>
                     <?php $price=$actual["price"];?>
                     <li class="music_card">
                         <div class="img_player">      <!--$uploads[1][$key] -> azért 1-es az 1. index, mert azon az indexen belül van a covers asszoc. mappa, ahonnan a borító képeket lehet elérni--->
-                            <img class="audio-img" src="<?php echo $uploads[1][$key] ?>" alt="beat<?php echo $i ?>" onclick="document.getElementById('audio_play<?php echo $i ?>').play(); return false;"/>
-                            <audio id="audio_play<?php echo $i ?>">
+                            <img class="audio-img" src="<?php echo $uploads[1][$key] ?>" alt="beat<?php echo $key ?>" onclick="document.getElementById('audio_play<?php echo $key ?>').play(); return false;"/>
+                            <audio id="audio_play<?php echo $key ?>">
                                 <source src="<?php echo $beat ?>">
                             </audio>
                         </div>
@@ -117,7 +117,7 @@
                         <p class="title">$<?php echo $title ?></p>
                         <p class="title">$<?php echo $price ?> | <?php echo $bpm ?> BPM</p>
                     </li>
-                    <?php $i++; ?>
+                    <?php //$i++; ?>
                     <?php } ?>
                 </ul>
             </div>
