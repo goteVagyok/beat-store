@@ -14,7 +14,7 @@
     $user_picture=$_SESSION["user_pic"];
 
    
-    $user_id=$user["id"];
+    $user_id=$_SESSION["user"]["id"];
 
 
     //delete account
@@ -92,11 +92,8 @@
                 </div>
                 <ul class="datas">
                     <li><a class="active" href="profile.php">My profile</a></li>
-                    <hr>
                     <li><a href="mymusic.php">My musics</a></li>
-                    <hr>
                     <li><a href="editdata.php">Edit data</a></li>   <!--change password|edit profile picture-->
-                    <hr>
                 </ul>
             </div>
             <!--adatok, a menü alapján-->

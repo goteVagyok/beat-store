@@ -145,11 +145,8 @@
                 </div>
                 <ul class="datas">
                     <li><a href="profile.php">My profile</a></li>
-                    <hr>
                     <li><a href="mymusic.php">My musics</a></li>
-                    <hr>
                     <li><a class="active" href="editdata.php">Edit data</a></li>   <!--change password|edit profile picture-->
-                    <hr>
                 </ul>
             </div>
             <!--adatok, a menü alapján-->

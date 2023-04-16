@@ -83,11 +83,8 @@
                 </div>
                 <ul class="datas">
                     <li><a href="profile.php">My profile</a></li>
-                    <hr>
                     <li><a class="active" href="mymusic.php">My musics</a></li>
-                    <hr>
                     <li><a href="editdata.php">Edit data</a></li>   <!--change password|edit profile picture-->
-                    <hr>
                 </ul>
             </div>
             <!--audiók-->

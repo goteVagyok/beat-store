@@ -284,25 +284,25 @@
     }
 
     function deleteDir($dirPath): void {
-            //kollaboralnom kellett stackoverflowal az elmem epsege megorzese vegett
-            //https://stackoverflow.com/a/3349792
-        if (! is_dir($dirPath)) {
-            throw new InvalidArgumentException("$dirPath must be a directory");
-        }
-        if (!str_ends_with($dirPath, '/')) {
-            $dirPath .= '/';
-        }
-        $files = glob($dirPath . '*', GLOB_MARK);
-        foreach ($files as $file) {
-            if (is_dir($file)) {
-                deleteDir($file);
-            } else {
-                unlink($file);
-            }
-        }
-        rmdir($dirPath);
+        //kollaboralnom kellett stackoverflowal az elmem epsege megorzese vegett
+        //https://stackoverflow.com/a/3349792
+    if (! is_dir($dirPath)) {
+        throw new InvalidArgumentException("$dirPath must be a directory");
     }
-
+    if (!str_ends_with($dirPath, '/')) {
+        $dirPath .= '/';
+    }
+    $files = glob($dirPath . '*', GLOB_MARK);
+    foreach ($files as $file) {
+        if (is_dir($file)) {
+            deleteDir($file);
+        } else {
+            unlink($file);
+        }
+    }
+    rmdir($dirPath);
+}
+    
     function delte_user($user_id){
         
         if( !($conn=server_connect()) ){
@@ -346,7 +346,6 @@
         } 
         mysqli_close($conn);
         return $success;
-
     }
 
 ?>
