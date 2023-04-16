@@ -16,7 +16,11 @@ if (isset($_SESSION['loggedin'])) {
 
     if(isset($_POST["submit"])) {
 
-        $track_id = get_n_of_uploads_by($username."/") - 1; // valamiert 2-t ad vissza 0 helyett xdd
+        if (!file_exists("assets/uploads/".$username)) {
+            mkdir("assets/uploads/".$username);
+        }
+
+        $track_id = get_n_of_uploads_by($username) - 1; // valamiert 2-t ad vissza 0 helyett xdd
 
         $dir_for_new_beat = "assets/uploads/".$username."/".$track_id;
         //megcsinaljuk a mappat az adott beatnek es covernek (ha van)
