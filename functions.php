@@ -32,7 +32,6 @@
         return $result;
     }
 
-    //ez fölösleges, a SESSION tudja helyettesíteni
     function list_actual_user($username){
         if( !($conn=server_connect()) ){
             return false;
@@ -45,8 +44,14 @@
         if( $success==false ){
             die(mysqli_error($conn));
         }
+
+        $result=mysqli_stmt_get_result($stmt);
+        $row=mysqli_fetch_assoc($result);
+
+        mysqli_stmt_close($stmt);
         mysqli_close($conn);
-        return $success;
+
+        return $row;
     }
 
     function list_mymusic($user_id){
@@ -63,7 +68,7 @@
         }
 
         mysqli_stmt_bind_result($stmt, $music_id, $title, $artist, $bpm, $price, $music_key, $u_id);
-        $array=array();
+        $music_array=array();
 
         //az összes rekordot beletesszük az asszoc tömbbe
         while (mysqli_stmt_fetch($stmt)) {

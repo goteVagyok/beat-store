@@ -76,6 +76,8 @@
             set_user($username2, $password2, $email);
             $success=true;
 
+            $user=list_actual_user($username2);
+
             $_SESSION["loggedin"] = true;
             $_SESSION["user"]=$user;
             $_SESSION["user_pic"]="assets/uploads/profile_picture.png";

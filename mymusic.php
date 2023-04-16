@@ -17,7 +17,7 @@
     $user_musics=array();
     $user_musics=list_mymusic($user_id);
     //megnézzük van-e egyáltalán zenénk az adatbázisban
-    if(count($user_musics)===0){
+    if(count($user_musics)==0){
         //ha nincs zenénk
         $have_beats=false;
     }else{
