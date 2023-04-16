@@ -16,6 +16,13 @@ if (isset($_SESSION['loggedin'])) {
 
     if(isset($_POST["submit"])) {
 
+        $track_id = get_n_of_uploads_by($username."/") - 1; // valamiert 2-t ad vissza 0 helyett xdd
+        $dir_for_new_beat = "assets/uploads/".$username."/".$track_id;
+        //megcsinaljuk a mappat az adott beatnek es covernek (ha van)
+        if (!file_exists($dir_for_new_beat)) {
+            mkdir($dir_for_new_beat);
+        }
+
         //cover lekezelése
         if(!(isset($_FILES["cover"]))){//&& !is_uploaded_file($_FILES["cover"]["tmp_name"])
             //ha nincs feltöltve kép, marad az alapértelmezett
@@ -88,12 +95,7 @@ if (isset($_SESSION['loggedin'])) {
                             mkdir("assets/uploads/".$username);
                         }
 
-                        $track_id = get_n_of_uploads_by($username."/") - 1; // valamiert 2-t ad vissza 0 helyett xdd
-                        $dir_for_new_beat = "assets/uploads/".$username."/".$track_id;
-                        //megcsinaljuk a mappat az adott beatnek es covernek (ha van)
-                        if (!file_exists($dir_for_new_beat)) {
-                            mkdir($dir_for_new_beat);
-                        }
+
 
                         //ADATOK ELTÁROLÁSA
                         $title= $_POST["title"];
@@ -109,7 +111,7 @@ if (isset($_SESSION['loggedin'])) {
                         $mymusic_id=$mymusics["music_id"];
                         
                         //áttesszük az audio mappába magát a zenét
-                        $uploads="assets/uploads/".$username."/".$track_id."/".$artist." - ".$title.".".$file_type; //username - beat_title
+                        $uploads="assets/uploads/".$username."/".$track_id."/".$artist."-".$title.".".$file_type; //username - beat_title
                         move_uploaded_file($beat_path, $uploads);
 
                         $upload_success=true;
