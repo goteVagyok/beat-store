@@ -23,7 +23,7 @@
         if( !($conn=server_connect()) ){
             return false;
         }
-        $result=mysqli_query( $conn, "SELECT * FROM users" );
+        $result=mysqli_query( $conn, "SELECT * FROM users" ); 
 
         if(!$result){
             die(mysqli_error($conn));
@@ -64,18 +64,23 @@
 
         mysqli_stmt_bind_result($stmt, $music_id, $title, $artist, $bpm, $price, $music_key, $u_id);
         $array=array();
-        mysqli_stmt_fetch($stmt);
-        $array["music_id"]=$music_id;
-        $array["title"]=$title;
-        $array["artist"]=$artist;
-        $array["bpm"]=$bpm;
-        $array["price"]=$bpm;
-        $array["key"]=$music_key;
-        $array["user_id"]=$u_id;
-        
+
+        //az összes rekordot beletesszük az asszoc tömbbe
+        while (mysqli_stmt_fetch($stmt)) {
+            $array=array();
+            $array["music_id"]=$music_id;
+            $array["title"]=$title;
+            $array["artist"]=$artist;
+            $array["bpm"]=$bpm;
+            $array["price"]=$bpm;
+            $array["key"]=$music_key;
+            $array["user_id"]=$u_id;
+
+            $music_array[] = $array;
+        }
 
         mysqli_close($conn);
-        return $array;
+        return $music_array;
     }
 
     function list_mymusic_by_music_id($music_id){
@@ -98,7 +103,7 @@
         $array["title"]=$title;
         $array["artist"]=$artist;
         $array["bpm"]=$bpm;
-        $array["price"]=$bpm;
+        $array["price"]=$price;
         $array["key"]=$music_key;
         $array["user_id"]=$u_id;
         
@@ -113,9 +118,9 @@
         return count($dirs);
     }
 
-    function get_cover_pic($username, $track_id): string {
+    /*function get_cover_pic($username, $track_id): string {
         $beat_folder = "assets/uploads/".$username."/".$track_id."/";
-        //pl.: assets/uploads/username/0/
+        //pl.: assets/uploads/username/1/
 
         $allowed=array('png','jpg','jpeg');
 
@@ -127,9 +132,44 @@
         }
         //ha nem talaltunk a mappaban kepet akkor a defaultot adjuk vissza
         return "assets/uploads/cover.jpg";
-    }
+    }*/
 
-    function get_beat($username, $track_id): string|null {
+    function get_beatNcover($username, $track_id){
+        //visszaadja music id szerint az audiot és a cover képet és a hozzá tartozó id-t
+
+        $directory="assets/uploads/".$username."/".$track_id."/";
+        //ha létezik a mappa
+        if(is_dir($directory)){
+            $audio=null;
+            $cover=null;
+            $cover_extensions=['png','jpg','jpeg'];
+
+            $directory_files=scandir($directory);
+
+            foreach($directory_files as $file){
+                if(is_file($directory.$file)){ //ha van olyan file a mappában
+                    $info=pathinfo($file);
+                    $extension=$info['extension'];//így meg tudjuk milyen kiterjesztésű a file
+
+                    if($extension==='mp3'){ //ha audio
+                        $audio=$directory.$file;    //kimentjük az audió file-t névvel és kiterjesztéssel, azaz az egész útvonalát
+                    }elseif(in_array($extension,$cover_extensions)){
+                        $cover=$directory.$file;    //ha képről van szó, akkor eltároljuk a borító képet
+                    }
+                }
+            }
+            //ha nincs kép az audip mellett, ad neki egy alapértelmezettet
+            if(!$cover && $audio){  //vagy if($cover===null && $audio!==null)
+                $cover="assets/uploads/cover.jpg";
+            }
+            //return ['audio' => $audio, 'cover' => $cover, 'music_id'=$track_id];
+            return [$audio, $cover, $track_id];
+        }else{
+            //ha nincs ilyen mappa
+            return null;
+        }
+
+        /*
         $beat_folder = "assets/uploads/".$username."/".$track_id."/";
         //pl.: assets/uploads/username/0/
 
@@ -143,6 +183,7 @@
         }
         //ha nem talaltunk a mappaban zenet akkor kurva nagy baj van xd
         return null;
+        */
     }
 
     function set_user($username, $password, $email){
@@ -206,29 +247,34 @@
         return null;
     }
 
-    function list_user_beats($user_music, $username){
-        //kilistázza az adott user zenéit képekkel együtt
+    function list_beats_and_covers($user_music, $username){
+        //kilistázza az adott user zenéit képekkel együtt (az összeset)
 
         //ha nincs zenéje a user-nek, akkor null-t ad vissza
-        if(count($user_music)==0){
+        if($user_music===0){
             return null;
         }
 
         $beats=array();
         $covers=array();
+        $uploads=array();
         
-        $i=1;//mappák indexelésére(1-től addig ahány mappa van az adott user-nek)
+        $i=1;//mappák indexelésére(1-től addig ahány mappa van az adott user-nek) == music_id
         $k=0;//tömb indexelésére
+        //addig megy, ahány zene van
         while($i<=count($user_music)){
 
+            $uploads[$k]=get_beatNcover($username, $user_music[$k]["music_id"]);
+            /*
             //sorban eltároljuk a zenék adatait
             $beats[$k]=get_beat($username, $i);
             $covers[$k]=get_cover_pic($username,$i);
+            */
 
             $k++;
             $i++;
         }
-        $uploads=[$beats, $covers]; //két asszociatív tömböt foglal magába
+        //$uploads=[$beats, $covers]; //két asszociatív tömböt foglal magába
         return $uploads;
     }
 

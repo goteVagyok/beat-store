@@ -8,10 +8,13 @@
 
 
     //aktuális felhasználó adatai
-    $user_name=$_SESSION["user"]["username"];
-    $user_email=$_SESSION["user"]["email"];
+    $user=$_SESSION["user"];
+    $user_name=$user["username"];
+    $user_email=$user["email"];
     $user_picture=$_SESSION["user_pic"];
-    $user_id=$_SESSION["user"]["id"];
+
+   
+    $user_id=$user["id"];
 
 
     //delete account
