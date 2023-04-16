@@ -97,7 +97,7 @@
     }elseif( isset($_POST["login"]) ){
 
         if(!isset($_POST["username"]) || trim($_POST["username"]) === "" || !isset($_POST["password"]) || trim($_POST["password"]) === ""){
-            $errors[]="<strong>Error:</strong> Fill the username and password fields!";
+            $errors[]="Fill the username and password fields!";
 
         }else{
 
@@ -125,11 +125,11 @@
 
                             header("Location: profile.php");
                         }else{
-                            $message="Invalid password!";
+                            $errors[]="Invalid password!";
                             $_POST=array();
                         }
                     }else{
-                        $message="Invalid username!";
+                        $errors[]="Invalid username!";
                         $_POST=array();
                     }
                 }
@@ -209,7 +209,7 @@
                     //echo var_dump($_POST);
                     if (isset($success) && $success === TRUE) {  // ha nem volt hiba, akkor a regisztráció sikeres
                         echo "<p>Successfully registration!</p>";
-                    } else {                                // az esetleges hibákat kiírjuk egy-egy bekezdésben
+                    } else if(!empty($errors) && is_array($errors)) {                            // az esetleges hibákat kiírjuk egy-egy bekezdésben
                         foreach ($errors as $error) {
                         echo "<strong>" . $error . "</strong>";
                         }

@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION["loggedin"])) {
+        header("Location: login-register.php");
+    }
+    
     include "functions.php";
     
     //aktuális felhasználó adatai
@@ -100,7 +105,7 @@
                 </div>
                 <ul class="slider_content">
                     <?php //$i=1; //számláló + music_id + tömb index?>
-                    <?php foreach($uploads[0] as $key => $beat) {?>
+                    <?php foreach($uploads[0] as $key => $beat) {//a $key music id is egyben?>
                     <?php $actual=list_mymusic_by_music_id($key); //music id alapján az aktuális zene adatai?>
                     <?php $title=$actual["title"];?>
                     <?php $artist=$actual["artist"];?>

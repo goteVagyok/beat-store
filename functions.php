@@ -150,7 +150,7 @@
         if( !($conn=server_connect()) ){
             return false;
         }
-        //id-t kivettem
+        
         $stmt = mysqli_prepare( $conn,"INSERT INTO USERS(username, password, email) VALUES (?, ?, ?)");
         mysqli_stmt_bind_param($stmt, "sss", $username, $password, $email);
         $success = mysqli_stmt_execute($stmt);
@@ -232,5 +232,21 @@
         return $uploads;
     }
 
+    function delte_user($user_id){
+        
+        if( !($conn=server_connect()) ){
+            return false;
+        }
+
+        $stmt = mysqli_prepare( $conn,"DELETE FROM USERS WHERE id=?");
+        mysqli_stmt_bind_param($stmt, "d", $user_id);
+        $success = mysqli_stmt_execute($stmt);
+
+        if ( $success == false ) {
+            die(mysqli_error($conn));
+        } 
+        mysqli_close($conn);
+        return $success;
+    }
 
 ?>

@@ -1,7 +1,6 @@
 <?php
     session_start();
-    if (!isset($_SESSION["user"])) {
-
+    if (!isset($_SESSION["loggedin"])) {
         header("Location: login-register.php");
     }
 
@@ -12,6 +11,30 @@
     $user_name=$_SESSION["user"]["username"];
     $user_email=$_SESSION["user"]["email"];
     $user_picture=$_SESSION["user_pic"];
+    $user_id=$_SESSION["user"]["id"];
+
+
+    //delete account
+    if(isset($_POST["delete"])){
+        /*
+        //megerősítés
+        echo "<form method='post' action='profile.php'>";
+        echo "Are you sure to delte your account?<br>";
+        echo "<input class='btn' type='submit' name='delete_confirm' value='Delete'>";
+        echo "<input class='btn' type='submit' name='no' value='No'>";
+        echo "</form>";
+        */
+        //ha törölni akarja
+        $succsess=delte_user($user_id);
+
+        if($succsess==false){
+            die("Error during delting the account!");
+        }else{
+            session_unset();
+            session_destroy();
+            header("Location: login-register.php");
+        }
+    }
 
 
 ?>
@@ -91,6 +114,12 @@
                     <ul>
                         <h2>Logout</h2>
                         <li><form action="logout.php"><input name="submit" class="btn" type="submit" value="Logout"></form></li>
+                    </ul>
+                    <ul>
+                        <h2>Delete account</h2>
+                        <li><form action="profile.php" method="post"><input name="delete" type="hidden" value="1">
+                        <button type="submit" class="btn" onclick="return confirm('Are you sure to delte your account?')">Delete account</button>
+                        </form></li>
                     </ul>
                 </ul>
             </div>
