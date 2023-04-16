@@ -54,7 +54,7 @@
         if( !($conn=server_connect()) ){
             return false;
         }
-        $stmt=mysqli_prepare( $conn, "SELECT MUSIC.music_id, MUSIC.title, MUSIC.artist, MUSIC.bpm, MUSIC.price, MUSIC.music_key, MUSIC.user_id FROM music WHERE user_id=?");
+        $stmt=mysqli_prepare( $conn, "SELECT * FROM music WHERE user_id=?");
         mysqli_stmt_bind_param($stmt, "d", $user_id);
 
         $result=mysqli_stmt_execute($stmt);
@@ -78,6 +78,34 @@
         return $array;
     }
 
+    function list_mymusic_by_music_id($music_id){
+        //listáz egy zenét music_id alapján
+        if( !($conn=server_connect()) ){
+            return false;
+        }
+        $stmt=mysqli_prepare( $conn, "SELECT * FROM music WHERE music_id=?");
+        mysqli_stmt_bind_param($stmt, "d", $music_id);
+
+        $result=mysqli_stmt_execute($stmt);
+        if(!$result){
+            die(mysqli_error($conn));
+        }
+
+        mysqli_stmt_bind_result($stmt, $music_id, $title, $artist, $bpm, $price, $music_key, $u_id);
+        $array=array();
+        mysqli_stmt_fetch($stmt);
+        $array["music_id"]=$music_id;
+        $array["title"]=$title;
+        $array["artist"]=$artist;
+        $array["bpm"]=$bpm;
+        $array["price"]=$bpm;
+        $array["key"]=$music_key;
+        $array["user_id"]=$u_id;
+        
+
+        mysqli_close($conn);
+        return $array;
+    }
 
     function get_n_of_uploads_by($username): int {
         //megmondja hany mappa van a felhasznalo mappajaban (hany tracket toltott fel)
@@ -100,6 +128,7 @@
         //ha nem talaltunk a mappaban kepet akkor a defaultot adjuk vissza
         return "assets/uploads/cover.png";
     }
+
     function get_beat($username, $track_id): string|null {
         $beat_folder = "assets/uploads/".$username."/".$track_id."/";
         //pl.: assets/uploads/username/0/
@@ -114,12 +143,9 @@
         }
         //ha nem talaltunk a mappaban zenet akkor kurva nagy baj van xd
         return null;
-}
+    }
 
-
-
-    function set_user($username, $password, $email): bool
-    {
+    function set_user($username, $password, $email){
 
         if( !($conn=server_connect()) ){
             return false;
@@ -132,8 +158,7 @@
         return $success;
     }
 
-    function set_music($user_id, $title, $artist, $price, $bpm, $music_key): bool
-    {
+    function set_music($user_id, $title, $artist, $price, $bpm, $music_key){
 
         if( !($conn=server_connect()) ){
             return false;
@@ -163,8 +188,7 @@
         return $success;
     }
 
-    function get_user_pic($username): string|null
-    {
+    function get_user_pic($username){
         //felhaszn.név alapján megkeresi a felhasználó prof. képét, ha nincs null-t ad vissza
         $extensions=array('png','jpg','jpeg');
         $directory="assets/uploads/";
@@ -182,17 +206,31 @@
         return null;
     }
 
-    function fetch_user_data($username): false|array|null
-    {
-        $query = "select * from users where username = '$username' limit 1";
-        $result = mysqli_query(server_connect(), $query);
+    function list_user_beats($user_music, $username){
+        //kilistázza az adott user zenéit képekkel együtt
 
-        if($result && mysqli_num_rows($result) > 0) {
-
-            return mysqli_fetch_assoc($result);
-
+        //ha nincs zenéje a user-nek, akkor null-t ad vissza
+        if(count($user_music)==0){
+            return null;
         }
-        return null;
+
+        $beats=array();
+        $covers=array();
+        
+        $i=1;//mappák indexelésére(1-től addig ahány mappa van az adott user-nek)
+        $k=0;//tömb indexelésére
+        while($i<=count($user_music)){
+
+            //sorban eltároljuk a zenék adatait
+            $beats[$k]=get_beat($username, $i);
+            $covers[$k]=get_cover_pic($username,$i);
+
+            $k++;
+            $i++;
+        }
+        $uploads=[$beats, $covers]; //két asszociatív tömböt foglal magába
+        return $uploads;
     }
+
 
 ?>

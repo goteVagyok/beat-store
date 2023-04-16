@@ -78,6 +78,12 @@
 
             $_SESSION["loggedin"] = true;
             $_SESSION["user"]=$user;
+            //ha van profilképe feltöltve, akkor azt adja át, ha nincs, akkor az alapértelmezettet
+            if(get_user_pic($username2)!==null){
+                $_SESSION["user_pic"]=get_user_pic($username2);
+            }else{
+                $_SESSION["user_pic"]="assets/uploads/profile_picture.png";
+            }
             //nem kell fetch-elni, mert már ez le van kezelve a függvényeknél
             //$_SESSION["user"] = fetch_user_data($username2);
 

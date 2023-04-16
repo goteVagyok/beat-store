@@ -1,7 +1,7 @@
 <?php
 
     include "functions.php";
-  session_start();
+    session_start();
     $user_picture="assets/uploads/profile_picture.png";
 
 if (isset($_SESSION['loggedin'])) {
@@ -16,65 +16,9 @@ if (isset($_SESSION['loggedin'])) {
 
 
     if(isset($_POST["submit"])) {
-        //ha meg nem letezik akkor csinalunk neki egy sajat mappat amibe mennek majd a feltoltesei
-        if (!file_exists("assets/uploads/".$username)) {
-            mkdir("assets/uploads/".$username);
-        }
 
-        if(!isset($_FILES["beat"])){
-            $errors[]="Upload your beat!";
-        }else{
-
-
-            $beat_path= $_FILES["beat"]["tmp_name"];
-
-            $fileName = $_FILES["beat"]["name"];
-            $fileSize = $_FILES["beat"]["size"];
-            $fileError = $_FILES["beat"]["error"];
-
-            $target_dir = getcwd() . "assets/audio/";
-            $target_file = $target_dir . basename($_FILES['beat']['name']);
-            $file_type = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-
-
-            //ha mp3 a file, és még nincs az audiók közt
-            if($file_type==="mp3" && !file_exists($target_file)){
-                if($fileError===0){
-                    if($fileSize<31457280){
-
-                        $track_id = get_n_of_uploads_by($username."/") - 1; // valamiert 2-t ad vissza 0 helyett xdd
-                        $dir_for_new_beat = "assets/uploads/".$username."/".$track_id;
-                        //megcsinaljuk a mappat az adott beatnek es covernek (ha van)
-                        if (!file_exists($dir_for_new_beat)) {
-                            mkdir($dir_for_new_beat);
-                        }
-
-                        //ADATOK ELTÁROLÁSA
-                        $title= $_POST["title"];
-                        $artist= $_POST["artist"];
-                        $bpm= $_POST["bpm"];//num
-                        $price= $_POST["price"];//num
-                        $music_key= $_POST["key"];
-
-                        //adatbázisba tesszük           FASZÉRT NEM MŰKÖDIK?
-                        set_music($user_id, $title, $artist, $price, $bpm, $music_key);
-                        //lekérjük a zene id-t, hogy ez alapján el tudjuk menteni az audiót az audio mappába
-                        $mymusics=list_mymusic($user_id);
-                        $mymusic_id=$mymusics["music_id"];
-                        
-                        //áttesszük az audio mappába magát a zenét
-                        $uploads="assets/uploads/".$username."/".$track_id."/".$artist." - ".$title.".".$file_type; //username - beat_title
-                        move_uploaded_file($beat_path, $uploads);
-
-                        $upload_success=true;
-                        $_POST=array();
-                    }
-                }
-            }
-        }
-        /*-----------------------------------------------------------------------------*/
         //cover lekezelése
-        if(!isset($_FILES["cover"]) && !is_uploaded_file($_FILES["cover"]["tmp_name"])){
+        if(!isset($_FILES["cover"]) ){//&& !is_uploaded_file($_FILES["cover"]["tmp_name"])
             //ha nincs feltöltve kép, marad az alapértelmezett
             $cover_path= "assets/uploads/cover.jpg";//am nem kéne eltárolni, majd elég megnézni, hogy az adott music id-hoz van-e cover, es ha nincs, berakjuk ezt
         }else{
@@ -102,7 +46,6 @@ if (isset($_SESSION['loggedin'])) {
                         //change_picture($cover_path, $user_name);
                         $upload_success=true;
                         $_POST=array();//$_POST ürítése
-                        //header("Location: profile.php");
                     }else{
                         $errors[]="The file's size is too big";
                     }
@@ -115,6 +58,65 @@ if (isset($_SESSION['loggedin'])) {
                 $upload_success=false;
                 $_POST=array();
                 $errors[]="The file's format is not allowed!";
+            }
+        }
+
+        /*-----------------------------------------------------------------------------*/
+
+        if(!isset($_FILES["beat"])){
+            $errors[]="Upload your beat!";
+        }else{
+
+
+            $beat_path= $_FILES["beat"]["tmp_name"];
+
+            $fileName = $_FILES["beat"]["name"];
+            $fileSize = $_FILES["beat"]["size"];
+            $fileError = $_FILES["beat"]["error"];
+
+            $target_dir = getcwd() . "assets/audio/";
+            $target_file = $target_dir . basename($_FILES['beat']['name']);
+            $file_type = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+
+            //ha mp3 a file, és még nincs az audiók közt
+            if($file_type==="mp3" && !file_exists($target_file)){
+                if($fileError===0){
+                    if($fileSize<31457280){
+
+                        //ha meg nem letezik akkor csinalunk neki egy sajat mappat amibe mennek majd a feltoltesei
+                        if (!file_exists("assets/uploads/".$username)) {
+                            mkdir("assets/uploads/".$username);
+                        }           
+                        $track_id = get_n_of_uploads_by($username."/") - 1; // valamiert 2-t ad vissza 0 helyett xdd
+                        $dir_for_new_beat = "assets/uploads/".$username."/".$track_id;
+                        //megcsinaljuk a mappat az adott beatnek es covernek (ha van)
+                        if (!file_exists($dir_for_new_beat)) {
+                            mkdir($dir_for_new_beat);
+                        }
+
+                        //ADATOK ELTÁROLÁSA
+                        $title= $_POST["title"];
+                        $artist= $_POST["artist"];
+                        $bpm= $_POST["bpm"];//num
+                        $price= $_POST["price"];//num
+                        $music_key= $_POST["key"];
+
+                        //adatbázisba tesszük
+                        set_music($user_id, $title, $artist, $price, $bpm, $music_key);
+                        //lekérjük a zene id-t, hogy ez alapján el tudjuk menteni az audiót az audio mappába
+                        $mymusics=list_mymusic($user_id);
+                        $mymusic_id=$mymusics["music_id"];
+                        
+                        //áttesszük az audio mappába magát a zenét
+                        $uploads="assets/uploads/".$username."/".$track_id."/".$artist." - ".$title.".".$file_type; //username - beat_title
+                        move_uploaded_file($beat_path, $uploads);
+
+                        $upload_success=true;
+                        $_POST=array();
+                        header("Location: mymusic.php");//a zenéidhez dob, hogy lásd, h ott van
+                    }
+                }
             }
         }
     }
@@ -157,7 +159,7 @@ if (isset($_SESSION['loggedin'])) {
         </ul>
         <?php if (isset($_SESSION["loggedin"])) { ?>
             <div>
-                <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
+                <a href="profile.php"><img class="profile-picture" src="<?php echo $user_picture ?>" alt="profile_picture"></a>
             </div>
         <?php } else { ?>
             <div class="connection">
@@ -215,6 +217,7 @@ if (isset($_SESSION['loggedin'])) {
     <input name ="submit" class="button" type="submit" value="List my beat">
     <input class="button" type="reset" value="Clear fields"><br/>
 </form>
+<div>
 <?php
     if (isset($upload_success) && $upload_success === TRUE) {  // ha nem volt hiba, akkor a regisztráció sikeres
         //echo "<p>Successfully picture uplode!</p>";
@@ -224,6 +227,7 @@ if (isset($_SESSION['loggedin'])) {
         }
     }
 ?>
+</div>
 <?php } else { ?>
     <div class="card-holder">
         <div class="log_reg-card">

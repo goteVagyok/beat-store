@@ -3,29 +3,21 @@
     include "functions.php";
     
     //aktuális felhasználó adatai
-
     $user_id=$_SESSION["user"]["id"];
     $user_name=$_SESSION["user"]["username"];
     $user_email=$_SESSION["user"]["email"];
-    //alap prof.lép
     $user_picture=$_SESSION["user_pic"];
 
+    $user_musics=array();
     $user_musics=list_mymusic($user_id);
-    $user_musics_id=$user_musics["music_id"];
-    $cover = get_cover_pic($user_name, 1);
-    $beat = get_beat($user_name, 1);
-
-
-function tmp() {
-    $user_name=$_SESSION["user"]["username"];
-
-    for ($i = 1; $i < count(scandir("assets/uploads/".$user_name."/")); $i++) {
-            $cover = get_cover_pic($user_name, $i);
-            $beat = get_beat($user_name, $i);
-            //TODO !!!!!
-            echo "na itt kene valahogy kiechozni a kepet meg a zenet a htmlbe de nemtudom hogyan";
-        }
-
+    //megnézzük van-e egyáltalán zenénk az adatbázisban
+    if(empty($user_musics) || $user_musics==false){
+        //ha nincs zenénk
+        $have_beats=false;
+    }else{
+        //ha van zenénk
+        $uploads=list_user_beats($user_musics, $user_name);//audio-cover párosok kilistázása -> tömb a tömbben
+        $have_beats=true;
     }
 
 
@@ -93,6 +85,11 @@ function tmp() {
                 </ul>
             </div>
             <!--audiók-->
+            <?php if($have_beats==false){ ?>
+            <div class="mymusics">
+                <h2 class="no-beats">You didn't upload any audio.</h2>
+            </div>
+            <?php }else{ ?>
             <div class="mymusics">
                 <div class="slider_head">
                     <h2>My tracks</h2>
@@ -102,28 +99,30 @@ function tmp() {
                     </div>
                 </div>
                 <ul class="slider_content">
+                    <?php $i=1; //számláló + music_id + tömb index?>
+                    <?php foreach($uploads[0] as $key => $beat) {?>
+                    <?php $actual=list_mymusic_by_music_id($i); //music id alapján az aktuális zene adatai?>
+                    <?php $title=$actual["title"];?>
+                    <?php $artist=$actual["artist"];?>
+                    <?php $bpm=$actual["bpm"];?>
+                    <?php $price=$actual["price"];?>
                     <li class="music_card">
-                        <div class="img_player">
-                            <img class="audio-img" src="assets/img/beat1.jpg" alt="beat1" onclick="document.getElementById('audio_play1').play(); return false;"/>
-                            <audio id="audio_play1">
-                                <source src="assets/audio/andromeda.mp3">
-                            </audio>
-                        </div>
-                        <h3>ANDROMEDA</h3>
-                        <p class="title">$24.5 | 123 BPM</p>
-                    </li>
-                    <li class="music_card">
-                        <div class="img_player">
-                            <img class="audio-img" src="<?php echo $cover ?>" alt="beat1" onclick="document.getElementById('audio_play0').play(); return false;"/>
-                            <audio id="audio_play0">
+                        <div class="img_player">      <!--$uploads[1][$key] -> azért 1-es az 1. index, mert azon az indexen belül van a covers asszoc. mappa, ahonnan a borító képeket lehet elérni--->
+                            <img class="audio-img" src="<?php echo $uploads[1][$key] ?>" alt="beat<?php echo $i ?>" onclick="document.getElementById('audio_play<?php echo $i ?>').play(); return false;"/>
+                            <audio id="audio_play<?php echo $i ?>">
                                 <source src="<?php echo $beat ?>">
                             </audio>
                         </div>
-                        <h3><?php echo "title goes here" ?></h3>
-                        <p class="title">$24.5 | 123 BPM</p>
+                        <h3><?php echo $artist ?></h3>
+                        <p class="title">$<?php echo $title ?></p>
+                        <p class="title">$<?php echo $price ?> | <?php echo $bpm ?> BPM</p>
                     </li>
+                    <?php $i++; ?>
+                    <?php } ?>
                 </ul>
             </div>
+            <?php } ?>
+
             <img class="waves-picture" src="assets/img/waves.png" alt="waves_picture">
         </div>
     </main>
