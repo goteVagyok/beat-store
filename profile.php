@@ -113,17 +113,17 @@
                     </li>
                     <li>
                         <h2>Logout</h2>
-                        <li>
+                        <div>
                             <form action="logout.php"><input name="submit" class="btn" type="submit" value="Logout"></form>
-                        </li>
+                        </div>
                     </li>
                     <li>
                         <h2>Delete account</h2>
-                        <li>
+                        <div>
                             <form action="profile.php" method="post"><input name="delete" type="hidden" value="1">
                             <button type="submit" class="btn" onclick="return confirm('Are you sure to delte your account?')">Delete account</button>
                         </form>
-                        </li>
+                        </div>
                     </li>
                 </ul>
             </div>
