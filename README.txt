@@ -5,6 +5,7 @@ footer -> About us helyére licensing.php, Merch, Pricing helyére mást, vagy t
 
 adatbázisban és a lekérdezésekben -> a music tábla key oszlopa music_key lett!
 
+'audio_play<?php echo $i ?>' -> így kéne: "$i" vagy így: $i => jó simán így: $i
 
 --------------------------------------------
 MySQL adatbázist létrehozó scriptek:

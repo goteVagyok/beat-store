@@ -253,6 +253,11 @@ label #cancel{
     70%{background-color: black;}
 }
 
+/*--error message--*/
+.errors{
+    padding-bottom: 20px;
+    font-size: 30px;
+}
 
 
 

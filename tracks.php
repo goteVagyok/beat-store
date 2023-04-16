@@ -38,9 +38,15 @@
             <li><a href="sell.php" class="menus">Sell your music</a></li>
             <li><a href="contact.php" class="menus">Contact</a></li>
         </ul>
-        <div class="connection">
-            <a href="login-register.php">Login</a>
-        </div>
+        <?php if (isset($_SESSION["user"])) { ?>
+            <div>
+                <a href="profile.php"><img class="profile-picture" src="<?php echo "$user_picture" ?>" alt="profile_picture"></a>
+            </div>
+        <?php } else { ?>
+            <div class="connection">
+                <a href="login-register.php">Login</a>
+            </div>
+        <?php } ?>
     </nav>
 </header>
 
