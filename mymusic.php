@@ -17,7 +17,7 @@
     $user_musics=array();
     $user_musics=list_mymusic($user_id);
     //megnézzük van-e egyáltalán zenénk az adatbázisban
-    if($user_musics===0){
+    if(count($user_musics)===0){
         //ha nincs zenénk
         $have_beats=false;
     }else{
@@ -128,7 +128,6 @@
                 </ul>
             </div>
             <?php } ?>
-
             <img class="waves-picture" src="assets/img/waves.png" alt="waves_picture">
         </div>
 

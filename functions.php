@@ -278,10 +278,58 @@
         return $uploads;
     }
 
+    function deleteDir($dirPath): void {
+            //kollaboralnom kellett stackoverflowal az elmem epsege megorzese vegett
+            //https://stackoverflow.com/a/3349792
+        if (! is_dir($dirPath)) {
+            throw new InvalidArgumentException("$dirPath must be a directory");
+        }
+        if (!str_ends_with($dirPath, '/')) {
+            $dirPath .= '/';
+        }
+        $files = glob($dirPath . '*', GLOB_MARK);
+        foreach ($files as $file) {
+            if (is_dir($file)) {
+                deleteDir($file);
+            } else {
+                unlink($file);
+            }
+        }
+        rmdir($dirPath);
+    }
+
     function delte_user($user_id){
         
         if( !($conn=server_connect()) ){
             return false;
+        }
+
+        $user_folder = "assets/uploads/".$_SESSION['user']['username'];
+
+        if(file_exists($user_folder)) {
+            deleteDir($user_folder);
+        }
+            /*    //user mappaja torlese
+                for($i = 1; $i < get_n_of_uploads_by($_SESSION['user']['username']) - 1; $i++) {
+                    foreach (scandir($user_folder."/".$i) as $dir) {
+                        foreach (scandir($user_folder."/".$i."/".$dir) as $f) {
+                            unlink($user_folder.$i.$dir.$f);
+                            //faszert nem lehet teli mappakat is torolni kurva eletbe mar
+                        }
+                        rmdir($user_folder.$i.$dir);
+                    }
+                    rmdir($user_folder.$i);
+                }
+                rmdir($user_folder);
+            en megprobaltam
+            */
+
+        $extensions = ['.jpg', '.jpeg', '.png'];
+        foreach ($extensions as $ext) {
+            //user profilkepe torlese (ha van)
+            if (file_exists($user_folder.$ext)) {
+                unlink($user_folder.$ext);
+            }
         }
 
         $stmt = mysqli_prepare( $conn,"DELETE FROM USERS WHERE id=?");
@@ -293,6 +341,7 @@
         } 
         mysqli_close($conn);
         return $success;
+
     }
 
 ?>
