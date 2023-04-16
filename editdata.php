@@ -174,7 +174,7 @@
                         <h2>Change password</h2>
                         <form action="editdata.php" method="post">
                             <div class="input-box">
-                                <input id="password2" type="password" name="password1" required><label for="password2"> Password</label>
+                                <input id="password1" type="password" name="password1" required><label for="password2"> Password</label>
                             </div>
                             <div class="input-box">
                                 <input id="password2" type="password" name="password2" required><label for="password2"> Confirm pswd</label>

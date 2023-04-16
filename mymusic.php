@@ -112,8 +112,8 @@
                     <li class="music_card">
                         <div class="img_player">      <!--$uploads[1][$key] -> azért 1-es az 1. index, mert azon az indexen belül van a covers asszoc. mappa, ahonnan a borító képeket lehet elérni--->
                             <img class="audio-img" src="<?php echo $upload[1] ?>" alt="beat<?php echo $i ?>" onclick="document.getElementById('audio_play<?php echo $i ?>').play(); return false;"/>
-                            <audio id="audio_play<?php echo $upload[0] ?>">
-                                <source src="<?php echo $beat ?>">
+                            <audio id="audio_play<?php echo $i ?>">
+                                <source src="<?php echo $upload[0] ?>">
                             </audio>
                         </div>
                         <h3><?php echo $artist ?></h3>

@@ -99,28 +99,32 @@
             <!--adatok, a menü alapján-->
             <div class="profile-data">
                 <ul class="datas">
-                    <ul>
+                    <li>
                         <h2>Username</h2>
-                        <li><?php echo "$user_name" ?></li>
-                    </ul>
-                    <ul>
+                        <p><?php echo "$user_name" ?></p>
+                    </li>
+                    <li>
                         <h2>Email</h2>
-                        <li><?php echo "$user_email" ?></li>
-                    </ul>
-                    <ul>
+                        <p><?php echo "$user_email" ?></p>
+                    </li>
+                    <li>
                         <h2>Profile picture's path</h2>
-                        <li><?php echo "$user_picture" ?></li>
-                    </ul>
-                    <ul>
+                        <p><?php echo "$user_picture" ?></p>
+                    </li>
+                    <li>
                         <h2>Logout</h2>
-                        <li><form action="logout.php"><input name="submit" class="btn" type="submit" value="Logout"></form></li>
-                    </ul>
-                    <ul>
+                        <li>
+                            <form action="logout.php"><input name="submit" class="btn" type="submit" value="Logout"></form>
+                        </li>
+                    </li>
+                    <li>
                         <h2>Delete account</h2>
-                        <li><form action="profile.php" method="post"><input name="delete" type="hidden" value="1">
-                        <button type="submit" class="btn" onclick="return confirm('Are you sure to delte your account?')">Delete account</button>
-                        </form></li>
-                    </ul>
+                        <li>
+                            <form action="profile.php" method="post"><input name="delete" type="hidden" value="1">
+                            <button type="submit" class="btn" onclick="return confirm('Are you sure to delte your account?')">Delete account</button>
+                        </form>
+                        </li>
+                    </li>
                 </ul>
             </div>
             <img class="waves-picture" src="assets/img/waves.png" alt="waves_picture">

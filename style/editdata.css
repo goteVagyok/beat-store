@@ -179,8 +179,11 @@ label #cancel{
     #check:checked ~ label #cancel{
         display: block;
     }
+}
+/*--profile picture--*/
+@media (width <= 900px) {
     /*--profile picture--*/
-    .profile-menu .profile-picture{
+    .container .profile-menu .profile-picture{
         width: 110px;
         height: 110px;
         padding: 0 10px;
